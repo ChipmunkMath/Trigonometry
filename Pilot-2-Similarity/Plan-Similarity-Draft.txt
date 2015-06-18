@@ -1,0 +1,117 @@
+Chipmunk Math
+Trigonometry
+
+Similarity
+Lesson Plan v1
+May 5, 2015
+
+
+=========================
+Lesson (basic and essential concepts)
+=========================
+- Begin by motivating the concept of similarity
+	+ ??? It would be nice to show an example of a precise scale model, then compare it to whatever it is modeling and talk about how everything in one is the same shape as the other, just at different sizes. The difficulty will be in sourcing high quality photos that have no copyright restrictions for my use. We'll see if I can get lucky.
+	+ Whether or not I can do above, show two similar polygons (parallelograms? other?) at very different sizes. Mention that they are not congruent, but they are still "similar" in terms of shape. We can see that one is just a scaled up version of the other.
+
+- Define similar
+	+ Use above motivating example to segue into a precise definition of "similar". What makes those polygons similar to each other?
+	+ Definition: Corresponding sides are all in proportion to each other and all angles are congruent to each other.
+		= [Aside: In the previous outline, I had claimed that it was enough to define similarity based entirely around proportional sides OR congruent angles. This is not the case, as a number of you pointed out to me and I realized afterwards. While true for triangles, you can see counter-examples with proportional rhombuses and congruent angled rectangles not necessarily implying similarity.]
+	+ Show the symbol for similar (~) and how it is used
+
+- Using similarity
+	+ Explain that proportional sides means that ratios comparing sides are equal.
+	+ Carefully diagram and color-code an example of how we use corresponding sides to create a fraction equation. Do this with similar quadrilaterals and use variables for sides.
+	+ Repeat the process, but this time with similar triangles and numbers. Have one of the triangles missing a side value. Begin by showing that the two known ratios are equal, then show how you can solve for the third pairing involving the unknown.
+
+- Focus on triangles
+	+ Point out that for triangles we have theorems to prove that they're similar. Note that the below theorems only work for triangles.
+	+ Thm: SSS Similarity -- If corresponding sides are proportional between two triangles, then the triangles are similar.
+		= Give real quick, simple example
+	+ Thm: AAA Similarity -- If angles are congruent between two triangles, then the triangles are similar.
+		= Give real quick, simple example
+		= Mention corollary of AA similarity (since 3rd angle is determined by others)
+	+ Thm: SAS Similarity -- If two corresponding sides are proportional and the common angle is congruent, then the triangles are similar.
+		= Give real quick, simple example
+	+ Be careful to note that these are NOT the same as congruence theorems. While they've probably learned SSS and SAS theorems for congruent triangles, these are not the same (although they sound similar). Instead of focusing on congruences, these theorems focus on proportions, so they wind up showing similarity instead (since similarity is connected to proportion).
+		= ??? Should I even mention AAA in terms of not being a congruence theorem? Might be interesting to point out that AAA was never a congruence theorem, because it only showed "same general shape" rather than congruence, but since "same shape" is what similarity is about, it makes sense that we have an AAA Similarity theorem. On the other hand, getting into that might be more confusing than it is useful.
+		= It would be nice if I wasn't using the same acronyms as the congruence theorems use (SSS, SAS), but those are the ones that appear in textbooks and other resources. It certainly is a possible source of confusion, but it's one they're already going to be exposed to.
+
+
+
+=========================
+Advanced Understanding (non-essential concepts, proofs, etc.)
+=========================
+- Introduce the idea of a "scale factor"
+	+ [If it happened (contingent on finding good images)] Reference back to the idea of scale models.
+	+ Show how we can see that same "scale factor" idea when working with similar shapes.
+	+ Define scale factor as the value you get when dividing big side by corresponding small side. Note that the scale factor is same for any pair of sides.
+	+ To go from small to big, multiply by scale factor. For opposite direction, do opposite: big to small, divide by scale factor.
+	+ Simple example problem using scale factor idea on a non-triangle (pentagon)
+	+ More complicated example problem using a fractional scale factor on a triangle.
+		= Remind that dividing by a fraction can be done by "flipping" and multiplying.
+
+- Show similarity with "weird" polygon shapes (many sides, concave, etc.)
+	+ Point out that all the same rules apply for similar figures, no matter the specific shape. (Show visualization of two similar "weird" shapes that are similar, then when saying that all the same rules apply, fade in equal angle arc symbols in the figures)
+	+ Give a simple example of "weird" similar shapes and doing algebra to solve for an unknown side.
+
+??? Still pretty unsure about actually trying to formally prove AAA or SSS similarity theorems. You can find Euclid's proofs below, but they rely on theorems about parallel lines and triangles that are a bit unreasonable to pull out of thin air outside of a geometry course.
+		= AAA Euclid proof: http://aleph0.clarku.edu/~djoyce/java/elements/bookVI/propVI4.html
+		= SSS Euclid proof: http://aleph0.clarku.edu/~djoyce/java/elements/bookVI/propVI5.html
+
+- Regardless of whether I have formal proofs for AAA, SSS, and SAS similarity, I'll have a "visual explanation" of how similarity works.
+	+ Begin with congruent triangles, then animate one to increase in size (dilation). Point out that "zooming in" on a figure keeps the shape (angles) the same, and increases all the side lengths by the same factor. By this reasoning, we have two similar triangles.
+		= Repeat process briefly, but this time "zooming out" (shrinking) slightly: point out that what we just said holds in this direction as well.
+	+ Note that if we have two AAA triangles, then the overall shape must be the same, one is just a more zoomed version of the other.
+	+ Similarly, if we have two SSS similar (proportional sides) triangles, we can "zoom" one of them appropriately until the sides are congruent between the triangles. Thus we have SSS congruence, so we have AAA, and then we can "zoom" back to the original and see they must hold similarity.
+	+ Might be able to get away with just hand-waving SAS at that point, but also might be worth giving it its own? Not sure. An SAS argument along these lines would be very similar (ha ha) to the above one used for SSS.
+
+- I'm currently leaning to only giving the hand-wavey explanation of the AA(A), SSS, and SAS similarity theorems. Since they rely on dilations, the above are at least vaguely rigorous (although we won't be formally claiming angle invariance under dilations, just noting that it happens).
+	+ While I generally like to have more rigor than less, it appears that almost no textbook or geometry class actually works out proofs for these. Many geometry classes simply claim them as "postulates" and keep moving. Trigonometry textbooks relegate them to appendices and are even more vague.
+	+ I have been able to find more accessible proofs for SSS and SAS (although the write-up leaves something to be desired): http://www.lavcmath.com/shin/SAS.SSS.similar.Theorems.pdf
+	+ Still have not found a more accessible proof for AAA similarity.
+
+- After noting (and possibly proving) why the AAA, SSS, and SAS theorems work, we'll address the fact that they do NOT necessarily work on non-triangles.
+	+ Rectangles of differing "aspect ratios" show that all congruent angles is not enough for similarity.
+	+ Rhombuses of differing "squished-ness" show that all proportional sides is not enough for similarity.
+	+ ??? Perhaps ignore SAS? Or simply note that it does not generalize nicely to more than three sides? [What would it become? SASAS? Confusing to apply.]
+		= It's tough to come up with a counter-example to "SASAS". Been trying for a few minutes and can't crack it yet. I think it might actually be sufficient.
+
+
+=========================
+Practice Problems [ * corresponds to difficulty, out of 3]
+=========================
+- (*) Similar polygons, solving for sides. Two triangles. Triangle A: 7, x, 9; Triangle B: 14, 24, y.
+
+- (*) Similar polygons, solving for sides. Two trapezoids. Trapezoid A: 2, x, 6, z; Trapezoid B: 5, 20, y, 9.
+
+- (**) Similar polygons, "weird shape" of concave 7-gon, solving for sides. Don't have all sides labeled. Use a fractional scale factor of 4/7 and label only five of the sides for each -- Purposefully have non-corresponding sides done in the labeling so you can comment on the fact that you have to be careful to choose corresponding sides when working the problem. Don't give the images in same orientation, one should be rotated.
+
+- (**) Similar polygons, "normal" triangles. Involves algebra. Place one triangle "inside" another larger triangle with parallel "bottoms". Must notice that triangles are similar (by AAA) before being able to progress.
+
+- (***) Word problem. Man standing near lightpole casts a shadow. Man is 6 feet tall, his shadow is 2 feet long, and the man is standing 4 feet from the base of the lightpole. How tall is the lightpole?
+	+ When working, pay special attention to explaining how we can craft diagrams to understand it better and bring our similar triangle skills to bear.
+
+- (***) Proof. Prove that two triangles are similar. Proof will hinge around applying SAS and some other basic geometric ideas.
+
+
+=========================
+Quick Review (very fast overview of essentials)
+=========================
+- Very fast motivation of similarity, use two triangles for picture. In picture, give side lengths for triangles.
+	+ Name the relationship shown by two triangles "similarity".
+	+ Define relationship of similarity (proportional sides, congruent angles)
+		= Highlight in picture that triangles have congruent angles.
+		= Create fractions showing that corresponding side ratios are the same throughout.
+	+ Show symbol (~)
+
+- Extremely quick example of solving for an unknown side in a pair of similar triangles.
+
+- Say that the concept of similarity can also work with any type of shape (show a non-triangle, like the "weird" 7-gon from problems)
+	+ Point out that setting up ratio is still done the same for strange shapes: just build fractions based on corresponding sides.
+
+- Quickly point out theorems about similarity in triangles
+	+ SSS
+	+ AA(A)
+	+ SAS
+	+ Point out that those are similarity, not congruence.

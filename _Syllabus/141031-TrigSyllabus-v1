@@ -1,0 +1,86 @@
+Trigonometry Course Syllabus
+Chipmunk Math
+1st Draft
+Started October 31, 2014
+Finished November 14, 2014
+
+Notes:
+	- Most trig courses don't focus on right-angle trig (not carefully checked, just my gut feeling), but I think that's a problem. Often it's more important to understand right-triangle trigonometry than it is to understand all the circle trig stuff you get in a "Trigonometry" course. Plus, it's a bit easier to pick up right-angle trig, and that helps both motivate and ease the transition to unit circle trig.
+		+ Thus, while most (I think?) Pre-Calculus, Math Analysis, Trigonometry, College Math, etc. courses are likely to gloss over or simply omit going through right-triangle trigonometry, I want to start my course with that.
+		+ Still, most students are likely to skip right over that section and start	with radians or the unit circle (or even much deeper), so I should try to avoid having overly much dependence on those sections.
+
+	- In general, avoid any expectation that students have watched significant
+	amounts of the course when giving any one lesson. Assuming that they are totally familiar with dependent material will help only the advanced students, and	at best it only allows for a slightly shorter video. Remind students of dependencies on previous material when creating the videos, and assign a space in the lesson modules to list dependencies with links to them if they want a refresher.
+		+ With the dependencies list in mind, it might also help to give a list of related and/or helpful concepts that aren't necessarily dependencies. Not sure what this would look like, and might also just clutter up that section. Something to think about.
+		+ When referring to dependencies in lessons, don't take too long to talk about them. You don't want to re-teach them there or go on about them, just point out that if they're unfamiliar with what you're doing now, they can get a refresher in such-and-such a lesson.
+
+
+
+Lesson Structure:
+	The lessons will be put into a "module" structure (is there a better name?): Each "lesson module" will approach a primary concept through multiple videos. This allows a variety of students to approach the same material at the level they need and in the way most useful to them.
+		In general, a lesson module will have the below breakdown:
+			+ "From the Start" [5-20min] -- Teaches material from scratch, no expectation of prior exposure. Intended for students who were absent from class, lack a math teacher, or who were not able to understand what was going on in class for one reason or another.
+			+ "Under the Hood" [5-15min] -- A deeper look at the mathematical reasoning: this is where theorem proofs, long-winded explanations, and the like will go. Intended for advanced students who already like math and just want to learn more.
+			+ "Practice" [10-20min] -- Applying the lesson concept to actual problems. Go through three to six actual problems, similar to what you'd find in a Trig math class. Intended for majority of students, from those who are struggling with how to apply concepts by themselves to those who are just looking for some quick review. Problem difficulty will ramp up and problem types will be structured to assist understanding of concept.
+				=== In addition to a video that goes through the problems, students can obtain the problems the video works through PRIOR to watching. They can also (separately) obtain the answers. That way they can attempt the problems on their own and focus on watching just the problems they had difficulty with, if they so desire.
+					[Web question: Is it possible to easily tie time of each problem being addressed to a link that syncs to that part of the video? I know this can be done on YouTube, but we would want to be able to do it on embeds on website as well.]
+			+ "Quick Review" [2-5min] -- A quick review of the important points in the concept. Assumes previous familiarity and decent understanding, exists as a refresher on already learned material. Intended for students who understood the concept in class already: perhaps they're reviewing before an exam, before they work the "Practice" video or their own homework, or for a reminder to do work in a different course (physics, calc, etc.)
+	[Obviously, some of these names are not so great. While "Practice" and "Quick Review" are probably perfectly fine names, "From the Start" and "Under the Hood" are much less certain. Whatever names are picked, they should evoke a sense of 'starting a new concept from scratch' and 'gets into nitty-gritty that is unnecessary for 90% of the class audience', respectively. It would also be nice if the "From the Start" name sounded slightly welcoming, while the "Under the Hood" had an optional sense to it.]
+			+ The above video types are likely to occur in almost every single lesson module. But there may occasionally be additional videos. For example, it would be nice to see a 'mnemonic' video type when there is something that is very important to memorize (an example might be a mnemonic for learning and navigating around the unit circle). Others may occasionally appear as well depending on need ('extra practice: more word problems' would definitely have a use in trig.)
+
+
+
+Note: Syllabus is broken into large sections (+) which are made up of multiple lesson modules (-). Any specific notes on a module are below with (=).
+
+=====
+Trigonometry Syllabus
+=====
+
++ Elemental (Right-Angle) Trigonometry
+	- Pythagorean Theorem
+	- Similarity
+	- Trigonometric Functions (Sin, Cos, Tan)
+	- Inverse Trigonometric Functions
+	- Solving Triangles
+	- Word Problems in Trigonometry
+
++ The Unit Circle and Trigonometric Functions
+	- Radians and Measuring Angles
+	- Trigonometry on the Unit Circle
+		= Just the basics---sin, cos, tan & intro to unit circle
+	- More Unit Circle Trigonometry
+		= Other trig fcns---csc, sec, cot; tougher probs (given sin, what is cos/tan? etc.); even/odd properties.
+	- Graphing Sine and Cosine
+	- Graphing Other Trig Functions (Tan, Csc, Sec, Cot)
+
++ Analytic Trigonometry (Identities)
+	- Trigonometric Identities
+		= Almost entirely about Pythag Ident, and verifying idents.
+	- Sum and Difference Formulas
+	- Double- and Half-Angle Formulas
+	- Product-to-Sum, Sum-to-Product Formulas
+
++ Inverse Trigonometric Functions
+	- Inverse Trig Functions on the Unit Circle
+	- Graphing Inverse Trigonometry Functions
+	- Solving Trigonometry Equations
+
++ Triangles Without Right-Angles
+	- Law of Sines
+	- Law of Cosines
+	- Area of a Triangle
+
++ Vectors
+	- Graphical Intro to Vectors
+	- Working with Vectors (Algebraic/Components)
+	- Vectors and Word Problems
+		= Exists to give a minor grounding in physics to do word problems
+	- The Dot Product
+	- The Cross Product and n-Dimensional Vectors
+
++ Polar Coordinates
+	- Polar Coordinate System
+	- Graphing Polar Equations/Functions
+	- Polar Coordinates and Complex Numbers
+		= Include a brief review of complex numbers in this module
+	- Complex Numbers: Arithmetic and Roots (De Moivre's Theorem) 

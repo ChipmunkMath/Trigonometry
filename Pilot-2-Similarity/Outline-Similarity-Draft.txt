@@ -1,0 +1,77 @@
+Chipmunk Math
+Trigonometry
+
+Similarity
+Outline v1
+April 28, 2015
+
+
+		NOTES TO SELF AFTER WRITING
+		- Turns out that similarity DOES actually need both sides proportional and angles proportional. If it doesn't have both conditions, you get weird things like all rhombuses are similar and all rectangles are similar. Unlikely that we have to get precise here about why the definition includes both, but it should have both. Apparently I'm not smarter than the books, they just didn't explain the full reason behind the definition.
+			+ Maybe I could mention the full reason in the Advanced Understanding?
+
+
+=========================
+Lesson (basic and essential concepts)
+=========================
+- Motivate idea
+
+- Definition of similar (proportions between corresponding sides all match)
+	??? Working through this, it seems like a lot of books/online sources define similarity as having matching proportions AND equal angles. But that's unnecessary: they're equivalent, so definition should only focus on one aspect. Will excluding one from the definition cause problems for students?
+	+ Show symbol for similar (~) and how it is used
+
+- Extremely simple example: Similar => Solve for missing side
+
+- Note that being similar is equivalent to having equal angles
+	+ After noting, make a theorem that says "Equal Angles <==> Similar"
+
+- Focus on triangles: SSS Similarity (point out it's just the definition), AA Similarity Thm,  SAS Similarity Thm
+
+
+=========================
+Advanced Understanding (non-essential concepts, proofs, etc.)
+=========================
+- Introduce notion of "scale factor"
+	+ Scale factor comes from ratio between big and small.
+	+ Multiply by scale factor to go from small to big, divide to go from big to small.
+	+ Simple example problem using scale factor idea on a non-triangle (pentagon?)
+
+- Show similarity with "weird" (many sides, concave, etc.) polygon shapes
+	+ Point out that all the same rules about similarity apply, even on "weird" shapes
+
+- Show and describe in more detail the fact that Similarity <==> Equal Angles
+
+??? Is there a basic proof that shows Similarity <==> Equal Angles? It's not particularly difficult to prove (at least for triangles -- I just sketched out most of a proof), but I realize I've never seen a formal proof of this before. I've seen the reasoning talked out in textbooks and online resources, but no proofs. I lean towards not showing any proof here and just showing that it is "reasonable" -- on the other hand, that's pretty low rigor. So, considering that this course lacks previous geometric work to draw upon, can you think of a proof that would not be too long while still being valuable to the student?
+
+- Proof of AA Similarity Thm (Triangles add to 180 degrees, third angle is implied)
+
+- Proof of SAS Similarity Thm (Still looking for good, simple proof, but haven't put much effort into search yet. If you know a good one off the top of your head, I'd appreciate it.)
+
+
+=========================
+Practice Problems [ * corresponds to difficulty, out of 3]
+=========================
+- (*) 2x similar polygons, solving for sides: one triangle, one trapezoid
+
+- (**) 1x similar polygons, weird shape: concave 7-gon
+
+- (**) 1x similar polygons, basic shape but involves algebra
+
+- (**) 1x similar polygons, word problem (parallel cables coming off different heights of a pole?)
+
+- (***) 1x proof: prove two triangles are similar (will hinge around either AAA or SAS similarity thms, not sure which one yet)
+
+
+=========================
+Quick Review (very fast overview of essentials)
+=========================
+- Extremely basic motivation while defining term similarity, use triangles for picture
+	+ Extremely simple ratio showing
+	+ Point out that this enables us to make algebra equations to solve
+	+ Also show symbol (~)
+
+- Mention that similarity is a concept that can work with any type of shape (show non-triangle)
+
+- Equal Angles <==> Similarity
+
+- For triangles, we also get similarity for AA or SAS

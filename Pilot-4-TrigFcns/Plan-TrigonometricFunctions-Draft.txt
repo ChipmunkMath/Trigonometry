@@ -1,0 +1,132 @@
+Chipmunk Math
+Trigonometry
+
+Trigonmetric Functions [Right Triangles]
+Lesson Plan v1
+May 19, 2015
+
+
+=========================
+Lesson (basic and essential concepts)
+=========================
+- Motivation for Trigonometry
+	+ There are a lot of situations where we want to know the length of something, but for one reason or another, we can't just go measure it.
+	+ As an example, consider if we wanted to know the height of a tall tree. 
+		=Even if you managed to climb up to the top of it, how could you manage to measure the height from there? All those branches would get in the way of any method you tried to measure with.
+		= However, notice that we could measure out some distance away from the bottom of the tree and also find the angle to the top from there.
+		= If we could figure out a ratio between the sides, we could solve for the tree's height.
+	+ Notice that, for any right triangle, the lengths of the sides are connected to the angles in the triangle.
+		= Illustrate this with an animation. Increase angle, hypotenuse and the opposite side must lengthen to maintain the right triangle relationship.
+	+ Note that realizing this connection between angles and lengths is really powerful! The field of math that studies this relationship is called "trigonometry" and it's extremely useful. It shows up all the time in Engineering, Physics, Architecutre, Carpentry, and more!
+
+- Segue into trigonometric functions
+	+ Knowing a corner angle in a right triangle does enable us to find out the ratio between sides.
+		= When saying above, show an illustration of a right triangle, but (at first) don't have any symbols on it. Just have a colored arc for the angle. Then have a theta symbol fade in on the arc.
+		= Introduce the symbol of theta. Mention that theta is a Greek letter. Since the ancient Greeks are basically the grandparents of modern geometry, using a Greek letter is a nice nod to this heritage.
+		= Spell theta out, show the symbol very large, and briefly describe how to write it out.
+	+ To help us keep track of the sides, we can describe them from the POV of our angle theta: 'opposite', 'adjacent', and 'hypotenuse.'
+		= Note that the side opposite is directly opposite the angle we're considering. It touches neither of those sides.
+		= Note that the side adjacent is adjacent (touches) the angle we're considering. Be careful not to get it confused with the hypotenuse!
+		= Note that the hypotenuse is the longest side and is always opposite from the right angle. Be careful not to get it confused with the adjacent side!
+	+ There are three possible ways for us to pair up the sides, and we give each of these pairings its own relationship.
+		= On triangle diagram, color code sides of triangle to trig "words" and have 'opposite' / 'adjacent' / 'hypotenuse' appear on diagram as we talk about them.
+			= sine
+			= cosine
+			= tangent
+	+ We mathematically define the relationships as follows:
+		= (Preferable method given -- will have to see based on how slides work) In center of slide, have a large diagram of a triangle with the sides and names color-coded [hyp = dark red; opp = bright green; adj = bright blue; theta = purple]. Then, below the diagram, one at a time, have each of the three trig functions appear in its own column. Use the colors given in the diagram to help show how each trig function "assembles" its ratio in a different way.
+			= Also, when working, have the proper name [for example, 'sine' (with e!)] for each function given above the equation. Remark that we shorten the names down to the three letter versions, but their real names are sine, etc.
+			= That said, they may occasionally hear 'tan' or 'cos' instead of the full name at times.
+		= sin(theta) = opp/hyp
+		= etc
+		= etc
+	+ Give quick example of finding sin, cos, and tan on a triangle [8, 15, 17].
+		= Afterwards, point out that if we had been looking from the other corner angle (fade in another symbol, like 'x'), we would have gotten different values for our trig functions.
+		= Make this an object lesson: Pay attention to angle POV when doing trig!
+
+- Keeping track of trig functions
+	+ Often the hardest part is just remembering which sides are associated with which trig function.
+	+ Give mnemonic of SOHCAHTOA
+		= First give it as just letters, then re-do as a dashed version: SOH-CAH-TOA, then re-do that as [hard to do in writing here] S: O/H // C: A/H // T: O/A, and fade in a comparison with the trig definitions we saw recently.
+	+ In time, you'll memorize these relationships, but for now, feel free to rely on the mnemonic. There's nothing wrong with writing SOH CAH TOA really obviously to the side of your work as a reminder. Can really help on tests!
+
+- Finding values from trig functions
+	+ The great thing is, we (humanity) know how to get the value of a trig function at any angle!
+	+ Say, for example, that you wanted to find the value of sin(47.19deg).
+		= Mention briefly that, in the old days before calculators were widespread, we would have had to look this up in a book. We could have used a table like the one below to get a decent approximation of our value:
+			= Table that has ~5 rows and 4 columns. One column is angles, other three are trig function names. Row angles are 46.9, 47.0, 47.1, 47.2, 47.3. Note that we would have used the sin column and chosen the closest angle we could find, then highlight the 47.2 angle. Point out that it would not have been perfect, but it would have been fairly decent.
+	+ Nowadays, things are a lot easier: we can just use a calculator to "look up" our value for a trig function.
+		= Show value (with MANY) decimal places that a calculator gives.
+			= Point out that the never-ending stream of decimals indicates that we don't have the value precisely. While an extremely good approximation, the value you see here is not perfect.
+	+ Note that every scientific and graphing calculator can find trig functions, along with almost all calculators on phones and computers. Depending on the way yours works, you'll either hit the appropriate trig function button, then type in the number and hit enter, or you'll just type in the number and hit the trig button.
+		= In below, purposefully hand-wave over radians. Mention that we'll learn more about them later, but for right now we're just focusing on degrees.
+		= Say that your calculator has to be in the appropriate "angle mode". For example, if you're doing a problem in degrees (like those in this lesson), you'll need to be in "degree mode". Calculators normally default to this mode, so don't worry if you've never heard of another way to measure angles. You can double-check your angle mode by doing cos(90). If you get 0, you're in degrees.
+		= If you get something different, don't worry, it's easy to get it back to degree mode. Just look for a 'mode' or settings' button, hit that, then look for a 'degrees' (or just 'deg') option. You might also just have a 'deg' button on the face of your calculator. If you still can't find a way to put it in degree mode, just do a quick internet search using the model name of your calculator: it should be easy to find the method online.
+
+- Solving for sides with trigonometry
+	+ Because we can now find the value of a trig function for any angle, we can start finding unknown sides of triangles.
+	+ Simple example of a triangle, know hypotenuse and angle, trying to find adjacent (x)and opposite (y) sides. 
+		= When solving, note that we know an angle and the hypotenuse, so we can use trig functions to connect an unknown side to those known values. For example, how can we connect 'x' to the hypotenuse? Reference sohCAHtoa, ah! We can use Cosine! Do similar for 'y' and sine, but feel free to move faster.
+	+ Bring back the motivating example of the tree and now complete it.
+		= Same as above, but connect to sohcahTOA.
+
+
+
+
+=========================
+Advanced Understanding (non-essential concepts, proofs, etc.)
+=========================
+- Angle POV matters
+	+ Note that it really matters which angle you do your trig fcns from
+	+ Diagram of simple right triangle [20, 21, 29] with corner angles of A (red) and B (blue).
+	+ Do the trig functions from each angle's POV (keep them color-coded). Point out that the results are not the same. Being careful with POV really matters!
+		= Note that, while different, sin(A)=cos(B) and vice-versa. Why is that? Similarly, while different, tan(A) and tan(B) are inverses of each other. What's up with that?
+		= The reason is because they swapped opposite and adjacent status. In a manner of speaking, they see the triangle from a "flipped" viewpoint, so the trig functions all behave in a "flipped" manner. Visually show in the diagram that A's opposite is B's adjacent and vice-versa.
+
+- When solving triangles, try to focus on working from initial givens
+	+ Consider a right triangle where you know an angle and a side.
+	+ Find another side using trig. Point out that you could find the final side by using trig again, but you could use the side you started with or the newly found side. Which is better?
+	+ Better to work from initial information because error propagates. If you got the first side wrong, at least you might get the second right by starting from the beginning again.
+	+ Finish the problem out, then point out that you can check your work with the Pythagorean Theorem.
+		= Show that the values on each side of the Pythag equation are NOT the same. Why is that? Rounding error. Notice that the values are super close: the difference is caused by the slight roundings we made. If you see that happen, don't worry. Your answer is probably right, it's likely just a rounding error issue.
+
+- Formal reasoning for why we can use trigonometry
+	+ Point out that for any two right triangles, if another angle is congruent as well, then all three are congruent.
+	+ Thus we have AAA similarity.
+	+ Thus if we know the ratio of sides for either triangle, we know it for both.
+	+ From there, it's just a matter of building up a list of the ratios for every angle
+
+- How did we actually find those trig ratios for various angles?
+	+ Very early method to find trig values involved using "chord functions". I still need to do more research here (both to understand and to gist it), but I'll come up with some way to quickly give a rough idea.
+	+ Eventually, with calculus, we learn a way to find an arbitrary trig value. Slow to do by hand, but it can be done.
+	+ Prior to the advent of calculators, people did this by hand very carefully then wrote the values down for later use. Books were printed with those values. When you needed a trig value, you actually looked it up in a book!
+	+ Nowadays, our calculators can just crunch the calculation fast enough that there's no need to use look up tables any more.
+
+=========================
+Practice Problems [ * corresponds to difficulty, out of 3]
+=========================
+- (*) 3x: Basic Trig set ups: sin, cos, and tan
+	= Have one of them involve a 30 degree angle, then point out the 30-60-90 triangle relationship and how the answers are exactly what we would get from using a special right triangle
+	= Have another one involve decimal angles instead of whole numbers for angles.
+
+- (**) Solve a triangle (find all sides and all angles)
+
+- (**) Simple trig word problem
+
+- (**) Triangle trig problem that involves algebra
+
+- (***) Difficult trig word problem
+
+
+=========================
+Quick Review (very fast overview of essentials)
+=========================
+- Breakdown of how sin, cos, and tan work on triangle
+	+ Give ratios
+	+ Point out importance of looking from POV of the angle
+	+ Note that your calculator can tell you the value for a trig function on an angle
+
+- Very simple example of trig function being used to solve for a side
+
+- Often hardest part is remembering which trig function goes with which sides, suggest SOHCAHTOA as mnemonic.
+	+ Give same graphic as shown in Basic Lesson S: O/H, etc.

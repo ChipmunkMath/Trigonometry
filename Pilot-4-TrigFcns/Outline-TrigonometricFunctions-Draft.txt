@@ -1,0 +1,106 @@
+Chipmunk Math
+Trigonometry
+
+Trigonometric Functions [in right triangles]
+Outline v1
+May 12, 2015
+
+
+=========================
+Lesson (basic and essential concepts)
+=========================
+- Motivation
+	??? There's a lot of ways to approach motivating trig functions. If you have a suggestion that you think works really well, I'd love to hear it. My current plan is below.
+	+ Note that there a lot of situations where we want to know the length of something, but can't really just measure it.
+	+ Example of measuring the height of a tall tree. Can't directly measure height, but could pace out a distance away and angle to top.
+	+ Notice that if we knew the ratio between the sides, we could solve.
+	+ Point out that the lengths of the sides are connected to the angles present in the triangle
+		= Show with an animation: increase angle, hypotenuse and opposite side lengthen to maintain right triangle relationship
+
+- Segue into trigonometric functions
+	+ Knowing one angle in the corner does enable us to find out what the ratio between sides is.
+		= Briefly mention that the angle we are using is called 'theta' and it's a greek letter, spell it out as well and maybe even show how to write it?
+	+ To keep track of the sides, call them (from POV of theta): 'opposite', 'adjacent', and 'hypotenuse'
+	+ Note that are three possible pairings of sides, and we give each pairing its own relationship:
+		= sine
+		= cosine
+		= tangent
+	+ We define the relationships as follows:
+		= sin(theta) = opp/hyp
+		= etc
+		= etc
+	+ Give quick example of finding sin, cos, and tan on a triangle.
+
+- Keeping track of trig functions
+	+ Often the hardest part is just remembering which sides are associated with which trig function.
+	+ Give mnemonic of SOHCAHTOA
+	??? Any other mnemonics that are particularly great?
+	+ In time, you'll memorize these relationships, but for now, feel free to rely on the mnemonic. There's nothing wrong with writing SOH CAH TOA really obviously to the side of your work as a reminder. Can really help on tests!
+
+- Finding values from trig functions
+	+ The great thing is, we (humanity at large) already know all the values for every trig function at any angle!
+		= Give an example of a table showing all the angles of sine from 1-89 degrees
+	+ Don't worry though, you don't have to use a table to look up the value, you can just use your calculator!
+	+ Every scientific and graphing calculator can find trig functions. Depending on the way yours works, you'll either hit the appropriate trig function button, then type in the number and hit enter, or you'll just type in the number and hit the trig button.
+		= Mention that your calculator has to be in the appropriate "angle mode". For example, if you're doing a problem in degrees (like those in this lesson), you'll need to be in "degree mode". Calculators normally default to this mode, so don't worry if you've never heard of another way to measure angles. You can double-check in your angle mode by doing cos(90). If you get 0, you're in degrees.
+
+- Solving for sides with trigonometry
+	+ Because we can "look up" the value of a trig function for any angle, we can start finding unknown sides of triangles.
+	+ Simple example of a triangle, solved through using sine.
+	+ Bring back the motivating example (tree or other) and now complete it
+
+
+=========================
+Advanced Understanding (non-essential concepts, proofs, etc.)
+=========================
+- Angle POV matters
+	+ Note that it really matters which angle you do your trig fcns from
+	+ Set up a simple right triangle, then do the trig functions from each angle and note how you get very different results.
+		= Point out that sin and cos swap places because they swapped opposite and adjacent status.
+
+- When solving triangles, try to focus on working from initial givens
+	+ Consider a right triangle where you know an angle and a side.
+	+ Find another side using trig. Point out that you could find the final side by using trig again, but you could use the side you started with or the newly found side. Which is better?
+	+ Better to work from initial information because error propagates. If you got the first side wrong, at least you might get the second right by starting from the beginning again.
+	+ Point out that you can check your work with the Pythagorean Theorem
+		= Note that it probably won't come out precisely the same because of rounding error.
+
+- Formal reasoning for why we can use trigonometry
+	+ Point out that for any two right triangles, if another angle is congruent as well, then all three are congruent.
+	+ Thus we have AAA similarity.
+	+ Thus if we know the ratio of sides for either triangle, we know it for both.
+	+ From there, it's just a matter of building up a list of the ratios for every angle
+
+- How did we actually find those trig ratios for various angles?
+	??? This is actually an interesting historical question I haven't looked into yet: how did humanity find the first decently complete set of trig values? Beyond calculus and extremely careful models, I don't know how you go about finding them in general. I'll look into this more, but if you know off-hand, I'm interested.
+	+ Eventually, with calculus, we learn a way to find an arbitrary trig value. Slow to do by hand, but it can be done.
+	+ Prior to the advent of calculators, people did this by hand very carefully, then books were printed with very precise values for very small step sizes. When you needed a trig value, you actually looked it up in a book!
+	+ Nowadays, our calculators can just crunch the calculation fast enough that there's no need to use look up tables any more.
+
+
+=========================
+Practice Problems [ * corresponds to difficulty, out of 3]
+=========================
+- (*) 3x: Basic Trig set ups: sin, cos, and tan
+	= Have one of them involve a 30 degree angle, then point out the 30-60-90 triangle relationship and how the answers are exactly what we would get from using a special right triangle
+
+- (**) Solve a triangle (find all sides and all angles)
+
+- (**) Simple trig word problem
+
+- (**) Triangle trig problem that involves algebra
+
+- (***) Difficult trig word problem
+
+
+=========================
+Quick Review (very fast overview of essentials)
+=========================
+- Breakdown of how sin, cos, and tan work on triangle
+	+ Give ratios
+	+ Point out importance of looking from POV of the angle
+	+ Note that your calculator can tell you the value for a trig function on an angle
+
+- Very simple example of trig function being used to solve for a side
+
+- Often hardest part is remembering which trig function goes with which sides, suggest SOHCAHTOA as mnemonic.

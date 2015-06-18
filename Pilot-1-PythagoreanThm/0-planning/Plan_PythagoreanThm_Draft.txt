@@ -1,0 +1,118 @@
+Chipmunk Math
+Trigonometry
+
+Pythagorean Theorem
+Lesson Plan v1
+April 28, 2015
+
+
+=========================
+Lesson (basic and essential concepts)
+=========================
+- Begin by motivating the idea
+	+ Show how the sides of a right triangle are connected: if any one side changes, the others have to vary in response. Preferably show this with an animation.
+	+ While discussing the above, define the terms "hypotenuse" and "leg".
+
+- Say that people have figured out how they must relate to each other. We can express this relationship with the equation "a^2 + b^2 = c^2" (picture of triangle with letters located appropriately)
+	+ Point out that 'a' and 'b' match to the legs, while 'c' matches to the hypotenuse. Note that we we could also write out the equation as "(leg)^2 + (leg)^2 = (hypotenuse)^2".
+	+ We call this equation "The Pythagorean Theorem"
+		= Named after the Greek mathematician Pythagoras. While he wasn't the first person to notice this special relationship, he may have been the first person to actually prove that it's always true. In any case, by tradition, we name it after him.
+	+ Notice that the theorem only applies to /right/ triangles!
+
+- Formally state Pythagorean theorem
+	+ Mention that if you're going to memorize one formula ever in your math career, this is probably the one to memorize.
+
+- Give very simple example of Pythagorean theorem in use (don't use a Pythagorean triple, purposefully have it come out with a simple radical)
+		+ Legs are length 2 and 4, hypotenuse is unknown [Answer= 2*sqrt(5)]
+
+- Motivate idea of a converse: "what if we had a triangle, but wanted to check if it was a right triangle?"
+	+ The Pythagorean theorem works in reverse! When a theorem "works in reverse", we call the "backwards" version the /converse/ of the theorem.
+
+- Formally state converse of Pythagorean theorem
+
+- Re-use answer from above simple example, but this time show that a triangle with such sides must be a right triangle by the converse.
+	+ While plugging in, point out that you need to plug in using parentheses!
+
+
+=========================
+Advanced Understanding (non-essential concepts, proofs, etc.)
+=========================
+- Proof of Pythagorean Theorem
+	+ Mention that there's lots of ways to prove it, the following is just one possible way.
+	+ Proof: Begin with a right triangle. Construct square out of four congruent right triangles. Note that area of large square must equal area of four triangles added to area of inner square. Do algebra to arrive at result.
+		= Image: http://www.mathsisfun.com/geometry/images/pythagorean-theorem-proof.png
+
+- Revisit converse of Pythagorean theorem, but this time talk about how a^2 + b^2 > c^2 means obtuse triangle, while a^2 + b^2 < c^2 means acute.
+	+ Note that 'c' no longer means hypotenuse in this case, it just means the longest side of the triangle.
+
+- Reason out why the above makes sense.
+	+ Start from a right triangle where a^2 + b^2 = c^2.
+	+ Notice that if we shrink 'c' a little bit, the right angle is forced to compress to being under 90deg: that is, we now have an acute triangle.
+	+ On the other hand, if we expand 'c' a little, the right angle is forced to grow beyond 90deg: we now have an obtuse triangle.
+
+- Proof of converse of Pythagorean theorem
+	+ While it seems reasonable that the converse is true, note that we haven't actually proven we can trust it yet.
+	+ Show proof of converse (Start with triangle where equation holds; construct a right triangle that uses same legs; by pythagorean theorem on new triangle, we have SSS congruence. Therefore the first triangle must also have been a right triangle.)
+
+??? I currently have no formal proof of the "converse" in regards to the inequalities. While I give reasoning for why they make sense, they aren't proven. Is that alright? On the one hand, it's low rigor, but on the other hand I haven't been able to find or think of an easy, elegant proof. Should I just skip over proving this aspect, or should I put in more than a hand-wavey explanation? I lean towards skipping a formal proof and just letting the hand-wavey explanation from earlier suffice.
+
+
+=========================
+Practice Problems [ * corresponds to difficulty, out of 3]
+=========================
+- (*) Right triangle, solve for hypotenuse. Legs are 21 and 3. [Answer= 15*sqrt(2)]
+
+- (*) Right triangle, solve for leg. Hypotenuse is 17, known leg is 8. [Answer= 15]
+	+ Point out that this is a Pythagorean triple and they can watch the video on that for more info.
+
+- (*) Two triangles with all legs known. Which triangle is a right triangle? Triangle A) 11, 8, 6;  Triangle B) 15, 12, 9. [Answer= Triangle A is not, B is right triangle]
+	+ Point out that Triangle A must be obtuse because 11^2 > 8^2 + 6^2, which we talked about in the Advanced Understanding video.
+
+- (**) Algebra. Solve for unknown variable. Right triangle with hypotenuse of (x+5), legs of 12 and (x-3). [Answer= x=8]
+
+- (**) Graphical problem. Square with side length of 5, find length of diagonal. [Answer= 5sqrt(2)]
+
+- (***) Word problem. Have a ladder that is 6m tall, to do all the work, the top of the ladder has to be at least 5m up the wall. What is the maximum distance the bottom of the ladder can be from the wall?
+
+
+=========================
+Quick Review (very fast overview of essentials)
+=========================
+- State Pythagorean theorem: a^2 + b^2 = c^2 with graphic of triangle
+	+ Stress that 'c' is the hypotenuse, opposite right angle, largest side
+	+ Stress that thm only works on right triangles
+	+ Stress that it's worth it to memorize this formula
+
+- Point out that when plugging in to formula, it is important to use parentheses for anything other than a very simple number.
+
+- State converse to Pythagorean theorem
+
+- Quickly mention inequalities in regards to converse: a^2 + b^2 > c^2 means obtuse triangle, a^2 + b^2 < c^2 means acute.
+
+
+=========================
+Extra: Pythagorean Triples (mainly to help students do better on standardized tests)
+=========================
+- Simple example of a 3-4-5 right triangle
+	+ Note how "clean" it is: aren't whole numbers lovely?
+
+- Name this "clean" thing a "Pythagorean Triple", formally define it.
+
+- State some of the low (first five or so?) Pythagorean triples.
+	+ Point out that any multiple of a triple (scaling all numbers by same number) is also a triple.
+
+- Mention that you'll often see Pythagorean triples on tests (after all, math instructors love "clean" answers). Thus, game the system! Memorize the first few triples. This especially helps on tests where time is at a premium.
+
+- See some examples in action:
+	+ Right triangle with hypotenuse 10, leg of 6, and an unknown leg.
+		= If you know your triples, super easy and fast.
+		= Take time to show how you would do by hand, and compare speeds.
+	+ Repeat problem from Practice Problems: " Solve for unknown variable. Right triangle with hypotenuse of (x+5), legs of 12 and (x-3). [Answer= x=8]"
+		= Point that if you know triple 5-12-13, you can quickly brute force the answer.
+
+- Prove that earlier claim of scaling triples by a constant factor does result in another triple.
+
+- List first 16 Pythagorean triple primitives. Say that you might find it useful to memorize all of them, but that 95% of test questions will only use...
+	+ Disappear all but the first three primitives (3-4-5, 5-12-13, 8-5-17)
+	+ "Or a multiple of one of them": Have multiples of 3-4-5 appear as well
+	+ Stress that while interesting, knowing the Pythagorean triples is really only useful for increasing your speed on some kinds of tests, but isn't important for understanding math in general.

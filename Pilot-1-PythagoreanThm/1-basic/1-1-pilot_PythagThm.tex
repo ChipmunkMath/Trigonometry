@@ -1,0 +1,766 @@
+%!TEX program = xelatex
+	% Above tells TeX compiler to use xelatex. Necessary because can't manually set due to working in SublimeText and using LaTeXTools.
+
+\documentclass[14pt, aspectratio=169, svgnames, xetex, rgb]{beamer}
+	% 14pt: Increase base text size to make reading easier (important for math eqns)
+	% aspectratio=169: Gives aspect ratio of 16:9 for better screen use and matching most commonly used aspect ratios. (Arguable that 1610 would be better, but the die is cast.)
+	% svgnames: This one is a little surprising. It's not actually a Beamer option, it's an option for the 'xcolor' package. However, since Beamer loads that package on start, this option needs to be given now to be passed down to 'xcolor'. If you try to give the option to 'xcolor' (below), it will throw error warnings.
+				% See note about 'svgnames' under 'xcolor' for usage regarding GLE.
+	% xetex: Another 'xcolor' option like 'svgnames' is. This is perhaps totally unnecessary, but this sets the color driver. Since compiling is done with xelatex, it seemed like 'xetex' was the best choice.
+	% rgb: Another 'xcolor' option like 'svgnames' is. This is perhaps totally unnecessary, but this chooses the target color model. Since all output is designed for monitor display, this seems like the best choice.
+
+
+\usetheme[nooffset, noslidenumbers, blockbg]{m}
+	% Theme showed by 'm' is "mtheme". It is a non-standard Beamer theme.
+		% Theme was made by Matthias Vogelgesang. Thanks to him and other contributers.
+		% Can find theme on GitHub: https://github.com/matze/mtheme
+	% nooffset: Prevents mtheme from adding \vspace{2em} vertical offset at top of slides
+	% noslidenumbers: Omits slide numbers on all slides
+
+\usefonttheme{dailyplanet}
+		% Self-devolped modification of font theme for Metropolis. Likely to change names in a future version. If you're trying to compile this in the future and it breaks, take a look in the docs for 'metropolis' / 'mtheme' theme style for Beamer. Look for alternate font themes. You'll want the one that mainly uses Fira Sans Book. Have fun finding it! :-D
+
+	\setbeamertemplate{blocks}[rounded][shadow=true]
+	% This rounds blocks and gives a dropshadow to blocks.
+		% Note the slightly odd presentation of options here. This has to be done.
+			% If combined to [option1, option2], it actually breaks both. Go figure.
+
+
+%%% Package loadout and descriptions %%%
+\usepackage{graphicx} % Allows insertion of images
+\usepackage{xcolor} % Enables the ability to work with colors
+	% Loading this package here is redundant because it's loaded with Beamer. However, if you switch to a different documentclass, you will need this. You will also need to migrate the 'svgnames' option in to this package call for GLE matching (see below).
+	% [Migrating the 'rgb' option is up to you depending on new purpose.]
+		% Option of 'svgnames' (given with documentclass) loads color definitions for SVG set of colors. The SVG set of colors is what GLE (the program drawing most images) defaults to using. If you use these colors, you'll get color matching...
+			% HOWEVER! To use these colors, you must write them with CAPITAL letters. 'green' (non-GLE) has a different definition than 'Green' (GLE matched).
+\usepackage{mathtools} % Loads various math things
+	% Package above loads 'amsmath', a very useful package to load for math typesetting
+\usepackage{booktabs} % Helps make prettier tables
+\usepackage{array} % Helps make better, more customizable arrays/tables
+\usepackage{siunitx} % Typeset SI units nicely
+\usepackage{wasysym} % Various symbols, specifically \photon for squiggles
+\usepackage[scale=2]{ccicons} %Creative Commons icons
+\usepackage{fontawesome} % Provides social media icons. REQUIRES: 'fontspec' and XeTeX
+	% IMPORTANT NOTE: 'fontawesome' package will kill your compile if you do not have the "fontawesome" font installed to your computer. Comment or delete if you do not have that font on your computer.
+\usepackage{comment} % Provides a comment environment. Used to omit frames during compile.
+
+
+
+		\usepackage{mdframed} %BETA for ending slide
+
+
+		\usepackage{abbrevs}
+		\newcommand*\BCE{\DateMark{b.c.e}}
+			% Specific to this document: want to typeset BCE.
+		\usepackage{pstricks}
+		\newsavebox\IBox
+			% Specific to this document: round frame corners on Pythag image (p1.jpg)
+
+
+%%% Standardized spacing commands %%%
+		%%% This is a bit of a hack, but it's important for spacings to look consistent. As such, here is a "standardized" set of vspace sizes. Try to use them in a consistent manner as you build slides.
+\newcommand{\as}{\vspace{0.1cm}} % A *small* space.
+\newcommand{\bs}{\bigskip} % Good ol' \bigskip, just shorter for writing.
+\newcommand{\cs}{\vspace{1cm}} % A *large* space for clear separation of ideas.
+\newcommand{\zs}{\vspace{-0.3cm}} % A negative space for tightening things as needed.
+
+%%% Special commands %%%
+\newcommand{\rad}[1][]{\sqrt[#1]{ \phantom{x} \hspace{-0.25em} }} % "Calculator" radical
+	% Need a sign to show doing a root on a calculator. \surd doesn't look quite right, so made this instead. Creates a free-standing radical sign with a bit of empty space.
+		% Usage: \rad for a square root, \rad[#] to indicate a #-th root.
+\newcommand{\?}{\overset{?}{=}} % Equals sign with '?' overset on it.
+	% Regularly have problems come up where you're verifying that an equation is actually true. Use this there. REQUIRES: 'amsmath' package (covered by 'mathtools' above).
+
+
+
+%%% Answer Boxing Command %%%
+	%%% Don't have a way to do this figured out yet. Just using a dummy command to help me find and replace later.
+	\newcommand<>{\answerbox}[1]{\alert#2{#1}}
+
+
+
+
+\title{The Pythagorean Theorem}
+\subtitle{Lesson}
+\author{Chipmunk Math}
+
+
+
+
+
+\begin{document}
+
+						%\begin{comment}
+						% This starts a very long comment environment. It is ended just before whatever current frame(s) is(are) being worked on. For long documents, this enables a faster compiling time.
+						% Look for matching \end{comment} near bottom of document.
+
+%%% Title Frame %%%
+	% Note that Title Frame formatting was created as a one-off. It could be ported forward, but might want to create something long-lasting in the future that can be executed via '\maketitle'.
+\begin{frame} 
+\large
+\textsc{Trigonometry}
+
+\vspace{0.7cm}
+
+\LARGE
+\textcolor[HTML]{EB811B}{\underline{\textcolor[HTML]{23373b}{The Pythagorean Theorem}}}
+
+\large
+\textbf{Lesson}
+
+
+\vspace{1.3cm}
+
+\begin{flushright}
+\Large \raisebox{0.8cm}{Chipmunk Math}\,\,\includegraphics<1->[width=0.15\textwidth]{../../chipmunk-transparent.png}
+\end{flushright}
+
+\vspace{-1.5cm}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+\begin{frame}\frametitle{Sides of a Right Triangle}
+    
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+	%%% Animation Dummy %%%
+\begin{frame}\frametitle{Sides of a Right Triangle --- ANIMATION DUMMY}
+    
+	\begin{center}
+		\includegraphics<1>[width=0.5\textwidth]{images/a1-hypot-grow_0.png}
+		\includegraphics<2>[width=0.5\textwidth]{images/a1-hypot-grow_149.png}
+	\end{center}
+
+\end{frame}
+\begin{frame}\frametitle{Sides of a Right Triangle --- ANIMATION DUMMY}
+    
+\begin{columns}
+
+	\begin{column}{0.5\textwidth}
+		\includegraphics<1->[width=\textwidth]{images/a1-hypot-grow_149.png}
+	\end{column}
+
+
+				%%% Column Break %%%
+
+
+	\begin{column}{0.5\textwidth}
+		\includegraphics<1>[width=\textwidth]{images/a2-base-shrink_0.png}
+		\includegraphics<2>[width=\textwidth]{images/a2-base-shrink_149.png}
+	\end{column}
+
+\end{columns}
+
+\end{frame}
+	%%% END Animation Dummy %%%
+
+
+
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+
+\begin{frame}\frametitle{Right Triangle Side Names}
+    
+	\begin{columns}
+	
+		\begin{column}{0.45\textwidth}
+			\includegraphics<1>[width=\textwidth]{images/d1.png}
+			\includegraphics<2>[width=\textwidth]{images/d2.png}
+			\includegraphics<3>[width=\textwidth]{images/d3.png}
+		\end{column}
+	
+	
+					%%% Column Break %%%
+	
+	\pause
+		\begin{column}{0.55\textwidth}
+			\begin{definition}
+				\textcolor<2>{Red}{\emph{Hypotenuse}}: The side that's opposite the right angle.
+
+				(This is the longest side). \pause
+				\bs
+
+				\textcolor<3>{Blue}{\emph{Leg}}: The name for the other sides. Both legs are shorter than the hypotenuse and they are opposite the non-right angles. 
+
+			\end{definition}
+		\end{column}
+	
+	\end{columns}
+
+\end{frame}
+
+
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+
+\begin{frame}\frametitle{Relationship Between Sides}
+\vspace{-0.5cm}
+    
+	\begin{columns}
+	
+		\begin{column}{0.5\textwidth}
+		\vspace{-0.5cm}
+
+			\includegraphics<1>[width=\textwidth]{images/d1.png}
+			\includegraphics<2>[width=\textwidth]{images/d4.png}
+			\includegraphics<3->[width=\textwidth]{images/d5.png}
+		\end{column}
+	
+	
+					%%% Column Break %%%
+	
+	
+		\begin{column}{0.5\textwidth}
+		\[
+			\begin{array}{ccccl}
+			\onslide<4->{\textcolor<1->{MediumBlue}{a^2}  &  +  &  \textcolor<1->{DarkTurquoise}{b^2}  &   =   &  \textcolor<1->{Red}{c^2}}\\
+			\onslide<7->{
+			\uparrow  &  &  \uparrow  & \qquad \quad &  \uparrow\\
+			\text{leg}  &&  \text{leg} &&  \hspace{-0.5cm} \text{hypotenuse}
+			}
+
+
+			\end{array}
+		\]
+		\end{column}
+	
+	\end{columns}
+
+	\vspace{-1.4cm}
+
+		\begin{center}
+		
+		\begin{tabular}{lcl}
+			\onslide<5->{Legs (short sides) & $\Longrightarrow$ & Together on one side}\\
+			\onslide<6->{Hypotenuse (long side) & $\Longrightarrow$ & Alone on other side}
+		\end{tabular}
+		\end{center}
+
+
+	\onslide<8->{We call this equation the \alert{Pythagorean Theorem}.}
+
+\end{frame}
+
+
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+
+\begin{frame}\frametitle{Pythaga-who?}
+    
+    \bs
+
+	\begin{columns}
+	
+		\begin{column}{0.4\textwidth}
+			\savebox\IBox{\includegraphics[width=0.9\textwidth]{images/p1.jpg}}
+			\begin{pspicture}(\wd\IBox,\ht\IBox)
+			\psclip{\psframe[framearc=0.2,linestyle=none](\wd\IBox,\ht\IBox)}
+			\rput[lb](0,0){\usebox\IBox}%
+			\endpsclip
+			\psframe[framearc=0.2,framesep=0pt, cornersize=relative,
+			  linecolor=black,linewidth=0.5mm](\wd\IBox,\ht\IBox)
+			\end{pspicture}
+		\end{column}
+	
+	
+					%%% Column Break %%%
+	
+	
+		\begin{column}{0.6\textwidth}
+			Pythagoras was an ancient Greek mathematician ($\sim$570-495\BCE).
+			\pause \bs
+
+			He actually was \emph{not} the first person to notice the special relationship that right triangles have.
+			\pause \bs
+
+			Still, he may have been the first to \emph{prove} that it must always be true.
+			\pause \bs
+
+			By tradition, we name it after him.
+		\end{column}
+	
+	\end{columns}
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+
+\begin{frame}\frametitle{The Pythagorean Theorem}
+    
+	\begin{columns}
+	
+		\begin{column}{0.4\textwidth}
+		\vspace{-0.2cm}
+
+			\includegraphics<1>[width=1\textwidth]{images/d1.png}
+			\includegraphics<2->[width=1\textwidth]{images/d6.png}
+		\end{column}
+	
+	
+					%%% Column Break %%%
+	
+	
+		\begin{column}{0.6\textwidth}
+			\begin{theorem}[Pythagorean]
+			For a right triangle, the square of the length of the hypotenuse is equal to the sum of the squares of the lengths of the other two legs.
+			\end{theorem}
+			\pause \zs
+			\begin{equation*}
+				\only<1-2>{\phantom{c^2 = a^2 + b^2}}
+				\only<3>{c^2 = a^2 + b^2}
+				\only<4->{\alert<6>{a^2 + b^2 = c^2}}
+			\end{equation*}
+		\end{column}
+	
+	\end{columns}
+	\pause \bs
+
+	\onslide<5->{Remember, this theorem \emph{only} applies to \emph{\alert<5>{right} triangles}.}\as
+
+	\onslide<6->{\alert{\textbf{Memorize}} this thing. It just never stops showing up.}
+
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+
+\begin{frame}\frametitle{Example --- Pythagorean Theorem}
+    
+	\begin{columns}
+	
+		\begin{column}{0.5\textwidth}
+			\includegraphics<1-3>[width=0.9\textwidth]{images/d7-initial.png}
+			\includegraphics<4->[width=0.9\textwidth]{images/d7.png}
+			\begin{overprint}
+			\begin{equation*}
+				\only<3->{4^2 + 2^2 =  \only<3>{?^2}  \only<4->{h^2}}
+			\end{equation*} 
+			\end{overprint}
+
+		\end{column}
+	
+	
+					%%% Column Break %%%
+	
+	
+		\begin{column}{0.5\textwidth}
+		\onslide<2->{
+			\begin{center}
+				\underline{Pythagorean Theorem}
+
+				\vspace{-0.7cm}
+				\includegraphics[width=0.8\textwidth]{images/d6.png}
+				\vspace{-0.9cm}
+
+				$a^2 + b^2 = c^2$
+			\end{center}
+			}
+		\end{column}
+	
+	\end{columns}
+
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+
+\begin{frame}\frametitle{Example --- Pythagorean Theorem, cont.}
+    
+	\begin{columns}
+	
+		\begin{column}{0.5\textwidth}
+			\includegraphics[width=0.9\textwidth]{images/d7.png}
+			\begin{overprint}
+			\begin{equation*}
+				\phantom{\only<3->{4^2 + 2^2 =  \only<3>{?^2}  \only<4->{h^2}}}
+			\end{equation*} 
+			\end{overprint}
+
+		\end{column}
+	
+	
+					%%% Column Break %%%
+	
+	
+		\begin{column}{0.5\textwidth}
+			\begin{align*}
+				\onslide<1->{ 4^2 + 2^2  &=  h^2 }\\
+				\onslide<2->{ 16 + 4  &=  h^2 }\\
+				\onslide<3->{ 20  &=  h^2 }\\
+				\onslide<4->{ \sqrt{20}  &=  h }\\
+				\onslide<5->{ \sqrt{4\cdot 5} &=  h}\\
+				\onslide<6->{ \answerbox<7>{2\sqrt{5}} &=  h}			
+			\end{align*}
+		\end{column}
+	
+	\end{columns}
+
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+
+\begin{frame}\frametitle{Refresher: Working with Square Roots}
+    
+	Simplify square roots by breaking numbers into their factors. \pause
+
+	Look for squares to ``pull out'' of the radical. \pause 
+	\cs
+
+
+	\begin{columns}
+	
+		\begin{column}{0.5\textwidth}
+			\underline{Example}
+			\begin{gather*}
+				\onslide<3->{\sqrt{63}} \\
+				\onslide<4->{\sqrt{ \textcolor<5>{Red}{9}\cdot 7 } } \\
+				\onslide<8->{ \answerbox<9>{ \textcolor<8>{Blue}{3} \sqrt{7} } }
+			\end{gather*}
+		\end{column}
+	
+	
+					%%% Column Break %%%
+	
+	
+		\begin{column}{0.5\textwidth}
+			\phantom{\underline{Example}}
+			\begin{gather*}
+				\phantom{sqrt{63}} \\
+				\onslide<6-8>{\textcolor<6>{Red}{9} = \textcolor<7>{Blue}{3}^2 } \\
+				\phantom{3 \sqrt{7}}
+			\end{gather*}
+		\end{column}
+	
+	\end{columns}
+
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+%%% Lots of duplication from prev. frame to match placements.
+\begin{frame}\frametitle{Refresher: Working with Square Roots, Calculators}
+    
+	Alternatively, if you're allowed, you can use a calculator\ldots
+	\bs
+
+
+	\begin{columns}[T]
+		\begin{column}{0.5\textwidth}
+			\onslide<6->{
+			Use a calculator to check your simplification by comparing:
+			\begin{gather*}
+				\sqrt{63} = \answerbox{3 \sqrt{7}} 
+			\end{gather*}
+			}
+			\vspace{-1.7cm}
+
+			\begin{gather*}
+				\onslide<8->{\mathtt{3 * \rad (7) }}\\
+				\onslide<9->{ \phantom{\text{\large $\checkmark$} \, \,} 
+				\textcolor<9>{Red}{ \mathtt{ \textcolor<10>{Blue}{7.9372539} } } }
+				 \, \, \onslide<11>{ \textcolor<11>{Green}{ \text{\large \checkmark}}}
+			\end{gather*}
+		\end{column}
+	
+	
+					%%% Column Break %%%
+	
+	
+		\begin{column}{0.5\textwidth}
+			\begin{gather*}
+				\onslide<2->{\mathtt{\rad(63)}} \\
+				\onslide<3->{ \textcolor<7-10>{Blue}{ \mathtt{7.9372539} } } \\
+			\end{gather*}
+			\vspace{-1.7cm}
+
+			\onslide<4-5>{\textbf{Careful}: It's \alert{\textbf{not}} exactly $\sqrt{63}$.}
+
+			\onslide<5>{It's a \scriptsize very, very good \normalsize \emph{approximation:}
+			\[
+				\sqrt{63} \approx 7.9372539
+			\]}
+
+			
+
+		\end{column}
+	
+	\end{columns}
+
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+
+\begin{frame}\frametitle{The Other Way Around}
+    
+	\begin{columns}
+	
+		\begin{column}{0.6\textwidth}
+			What if we had a triangle where we knew the sides, but didn't know if it was a right triangle?
+		\end{column}
+	
+	
+					%%% Column Break %%%
+	
+	
+		\begin{column}{0.4\textwidth}
+			\includegraphics<1>[width=\textwidth]{images/d8.png}
+			\includegraphics<2>[width=\textwidth]{images/d9.png}
+			\includegraphics<3->[width=\textwidth]{images/d10.png}
+		\end{column}
+	
+	\end{columns}
+
+	\bs
+
+	\onslide<4->{Great news! The Pythagorean Theorem works ``in reverse''!}
+	\as
+
+	\onslide<5->{(When a theorem works ``in reverse'', we call the ``backwards'' version the \emph{\textbf{converse}} of the theorem.)}
+
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+
+\begin{frame}\frametitle{Converse of Pythagorean Theorem}
+    
+	\begin{columns}
+	
+		\begin{column}{0.4\textwidth}
+			\includegraphics<1>[width=\textwidth]{images/d8.png}
+			\includegraphics<2-3>[width=\textwidth]{images/d9.png}
+			\includegraphics<4->[width=\textwidth]{images/d11.png}
+		\end{column}
+	
+	
+					%%% Column Break %%%
+	
+	
+		\begin{column}{0.6\textwidth}
+			\begin{theorem}[Converse of Pythagorean]
+				Given a triangle, if the square of the length of the longest side equals the sum of the squares of the other two side lengths, then the triangle is a right triangle.
+			\end{theorem}
+		\end{column}
+	
+	\end{columns}
+
+	\onslide<3->{ \underline{\textbf{If:}}  \only<3-4>{ $c^2=a^2 + b^2$} \only<5->{$a^2 + b^2=c^2$} }
+
+	\onslide<4->{ \underline{\textbf{Then:}} Right triangle}
+	\as
+
+	\onslide<6->{\qquad \underline{Also:}\,\, $a^2+b^2 \boldsymbol{ \neq } c^2 \, \Longleftrightarrow \,$ \textbf{Not} a right triangle}
+
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+
+\begin{frame}\frametitle{Example --- Pythagorean Converse}
+    
+	\begin{columns}
+	
+		\begin{column}{0.27\textwidth}
+			\includegraphics<1-8>[width=\textwidth]{images/d12.png}
+			\includegraphics<9->[width=\textwidth]{images/d13.png}
+		\end{column}
+	
+	
+					%%% Column Break %%%
+	
+	
+		\begin{column}{0.73\textwidth}
+
+		\cs
+
+			\onslide<2->{
+			Converse:
+			\textbf{\underline{If}} $a^2 + b^2 = c^2$, \textbf{\underline{then}} right triangle.
+			}
+			\begin{align*}
+				\onslide<3->{ 2^2 + 4^2   & \alert<4>{\?}  \left(2 \sqrt{5} \right)^2 }\\
+				\onslide<5->{ 4 + 16   &\?  2^2 \cdot \sqrt{5}^2}\\
+				\onslide<6->{ 20  &\?  4 \cdot 5 }\\
+				\,\, \onslide<7->{ 20  &\alert<7>{=}  20 } \onslide<8->{\,  \checkmark }
+			\end{align*}
+
+			
+			\onslide<9>{ Therefore, it is a right triangle. }
+		\end{column}
+	
+	\end{columns}
+
+
+\end{frame}
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+%%% Lesson finished, Ending Slide %%%
+
+
+	% Future note: While this boilerplate ending slide looks pretty decent, it could be improved upon. A good thing to do would be to create a static image in photoshop, then just re-use that. This will do for the pilot though.
+
+
+\begin{frame}[b]\frametitle{Thanks for Watching!}
+    
+\vspace{0.25cm}
+
+				%%% Column Break %%%
+
+
+
+
+		\begin{center}
+			\large Watch the rest of the videos on this topic!
+			\vspace{0.1cm}
+
+			\LARGE
+			\underline{www.\Huge\textbf{chipmunkmath}\LARGE.com} \normalsize
+
+			\bigskip
+
+
+		\end{center}
+
+
+
+
+\vspace{0cm}
+
+
+\begin{columns}[t]
+
+	\begin{column}{0.45\textwidth}
+
+	\vspace{0.5cm}
+
+		\LARGE\textcolor[RGB]{85,172,238}{\faTwitter}\large \raisebox{0.27em}{@ChipmunkMath}\normalsize
+
+		\vspace{0.5cm}
+
+		\footnotesize
+
+		\underline{Attribution:}
+
+		\scriptsize
+		Pythagoras photo by Mary Harrsch on Flickr \, \tiny \ccLogo \ccAttribution  \ccNonCommercial  \ccShareAlike \footnotesize
+	\end{column}
+
+
+				%%% Column Break %%%
+
+				\begin{column}{0.05\textwidth}
+					\vspace{0.1cm}
+					\begin{center}
+						\rule{0.03cm}{2.6cm}
+					\end{center}
+				\end{column}
+
+
+	\begin{column}{0.5\textwidth}
+		\begin{center}
+		\fbox{\,\includegraphics<1->[width=0.08\textwidth]{../../chipmunk-transparent.png} \,\,\, \small \raisebox{0.25em}{\textcolor<1->{Crimson}{\faHeart} \,\,\,Free Education}\,}
+		\end{center}
+		\vspace{-0.3cm}
+		
+		
+		\small Creative Commons: \, \scriptsize \ccLogo \, \ccAttribution \, \ccNonCommercial \, \ccShareAlike \small
+
+		Open source, available on GitHub \normalsize \faGithub \small
+
+		Details at chipmunkmath.com
+
+	\end{column}
+
+\end{columns}
+
+\vspace{0.3cm}
+\hspace{-3cm}\textcolor[HTML]{EB811B}{\rule{7cm}{0.02cm}}
+
+\footnotesize
+
+	\vspace{-0.1cm}
+
+\textbf{Attribution:} Pythagoras photo by Mary Harrsch on Flickr \, \tiny \ccLogo \ccAttribution  \ccNonCommercial  \ccShareAlike \footnotesize
+
+
+\end{frame}
+
+
+\end{document}

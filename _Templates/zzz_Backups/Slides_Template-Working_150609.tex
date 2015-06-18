@@ -1,0 +1,77 @@
+%!TEX program = xelatex
+	% Above tells TeX compiler to use xelatex. Necessary because can't manually set due to working in SublimeText and using LaTeXTools.
+
+\documentclass[12pt, aspectratio=169, svgnames, xetex, rgb]{beamer}
+	% 12pt: Increase base text size to make reading easier.
+	% aspectratio=169: Gives aspect ratio of 16:9 for better screen use and matching most commonly used aspect ratios. (Arguable that 1610 would be better, but the die is cast.)
+	% svgnames: This one is a little surprising. It's not actually a Beamer option, it's an option for the 'xcolor' package. However, since Beamer loads that package on start, this option needs to be given now to be passed down to 'xcolor'. If you try to give the option to 'xcolor' (below), it will throw error warnings.
+				% See note about 'svgnames' under 'xcolor' for usage regarding GLE.
+	% xetex: Another 'xcolor' option like 'svgnames' is. This is perhaps totally unnecessary, but this sets the color driver. Since compiling is done with xelatex, it seemed like 'xetex' was the best choice.
+	% rgb: Another 'xcolor' option like 'svgnames' is. This is perhaps totally unnecessary, but this chooses the target color model. Since all output is designed for monitor display, this seems like the best choice.
+
+
+\usetheme[nooffset, noslidenumbers, blockbg]{m}
+	% Theme showed by 'm' is "mtheme". It is a non-standard Beamer theme.
+		% Theme was made by Matthias Vogelgesang. Thanks to him and other contributers.
+		% Can find theme on GitHub: https://github.com/matze/mtheme
+	% nooffset: Prevents mtheme from adding \vspace{2em} vertical offset at top of slides
+	% noslidenumbers: Omits slide numbers on all slides
+
+	\setbeamertemplate{blocks}[rounded][shadow=true]
+	% This rounds blocks and gives a dropshadow to blocks.
+		% Note the slightly odd presentation of options here. This has to be done.
+			% If combined to [option1, option2], it actually breaks both. Go figure.
+
+
+%%% Package loadout and descriptions %%%
+\usepackage{graphicx} % Allows insertion of images
+%\usepackage{xcolor} % Enables the ability to work with colors
+	% Loading this package here is redundant because it's loaded with Beamer. However, if you switch to a different documentclass, you will need this. You will also need to migrate the 'svgnames' option in to this package call for GLE matching (see below).
+	% [Migrating the 'rgb' option is up to you depending on new purpose.]
+		% Option of 'svgnames' (given with documentclass) loads color definitions for SVG set of colors. The SVG set of colors is what GLE (the program drawing most images) defaults to using. If you use these colors, you'll get color matching...
+			% HOWEVER! To use these colors, you must write them with CAPITAL letters. 'green' (non-GLE) has a different definition than 'Green' (GLE matched).
+\usepackage{mathtools} % Loads various math things
+	% Package above loads 'amsmath', a very useful package to load for math typesetting
+\usepackage{booktabs} % Helps make prettier tables
+\usepackage{array} % Helps make better, more customizable arrays/tables
+\usepackage{siunitx} % Typeset SI units nicely
+\usepackage{wasysym} % Various symbols, specifically \photon for squiggles
+\usepackage[scale=2]{ccicons} %Creative Commons icons
+
+
+%%% Standardized spacing commands %%%
+		%%% This is a bit of a hack, but it's important for spacings to look consistent. As such, here is a "standardized" set of vspace sizes. Try to use them in a consistent manner as you build slides.
+\newcommand{\as}{\vspace{0.1cm}} % A *small* space.
+\newcommand{\bs}{\bigskip} % Good ol' \bigskip, just shorter for writing.
+\newcommand{\cs}{\vspace{1cm}} % A *large* space for clear separation of ideas.
+\newcommand{\zs}{\vspace{-0.3cm}} % A negative space for tightening things as needed.
+
+
+
+\title{Remember to Make a Title!}
+\date{}
+
+
+
+\begin{document}
+
+
+%%% Title Frame %%%
+\begin{frame}
+\maketitle
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+
+\begin{frame}\frametitle{BabysFirstFrame}
+    
+\end{frame}
+
+
+\end{document}

@@ -1,0 +1,9 @@
+Module: ModuleGoesHere
+Video: VideoGoesHereNumberDashType
+Image: Image (Description)
+
+Image by: NameAttribution
+LinkToSite
+
+License: Creative Commons CopyPastaLicenseType
+LinkToCCLicense

@@ -1,0 +1,70 @@
+Chipmunk Math
+Trigonometry
+
+Special Right Triangles
+Outline v1
+May 5, 2015
+
+
+=========================
+Lesson (basic and essential concepts)
+=========================
+- ??? Motivation?
+	+ What's a good way to motivate special right triangles?
+	+ Could begin by making connection to previous lesson on similarity, wondering if there are certain triangle "shapes" it's easy to know a lot about.
+
+- 45-45-90 Triangle
+	+ Diagram with 's' for short legs and s*sqrt(2) for hypotenuse.
+	+ Give example where we know one leg, fill in other two
+	+ Give example where we know hypotenuse, find legs
+
+- 30-60-90 Triangle
+	+ Diagram with 's' for short leg, s*sqrt(3) for long leg, and 2s for hypotenuse.
+	+ Point out importance of knowing which leg you're dealing with (unlike 45-45-90, where the legs matched, here you have to pay closer attention to opposite angles)
+	+ Give example where we know one short leg, fill in other two
+	+ Give example where we know hypotenuse, fill in other two
+		= Point out that it's useful to find short leg first, since diagram was built around short leg
+	+ Give example where we know long leg, fill in other two
+		= Re-emphasize value of finding short leg first.
+
+
+=========================
+Advanced Understanding (non-essential concepts, proofs, etc.)
+=========================
+- Proof of 45-45-90
+	+ Create a 45-45-90 triangle with one leg side 's'.
+	+ Isosceles, so now know both legs are 's'.
+	+ Apply pythag thm to find hypotenuse.
+
+- Proof of 30-60-90
+	+ Begin with equilateral triangle, side length of '2s'
+	+ Split down "middle" with a perpendicular
+	+ Note 30-60-90 and that short leg is now 1s = s.
+	+ Apply pythag thm to find long leg.
+
+
+=========================
+Practice Problems [ * corresponds to difficulty, out of 3]
+=========================
+- (*) 2x 45-45-90 problems: one begins with a leg, one begins with hypotenuse
+
+- (*) 3x 30-60-90 problems: one begins with short leg, one begins with hypotenuse, one begins with long leg
+
+- (**) 1x Simple algebra problem on 30-60-90 triangle
+
+- (**) Mix of two 30-60-90 triangles with a 45-45-90 glued between them
+	= See #2 on this page for a better idea: http://www.regentsprep.org/regents/math/algtrig/att2/pracspecial.htm
+
+- (***) Find the area of a regular hexagon
+
+
+=========================
+Quick Review (very fast overview of essentials)
+=========================
+- Diagram of 45-45-90 right triangle
+	+ Quick example of using it if you know a leg
+
+- Diagram of 30-60-90 right triangle
+	+ Quick example of using it if you know short leg
+	+ Point out that if you know a different side, find the short leg first
+	+ Quick example of using if you know hypotenuse

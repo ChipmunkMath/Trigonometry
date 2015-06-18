@@ -1,0 +1,152 @@
+Chipmunk Math
+Trigonometry
+
+Special Right Triangles
+Lesson Plan v1
+May 12, 2015
+
+
+=========================
+Lesson (basic and essential concepts)
+=========================
+- Motivation:
+	+ From the idea of similarity, we know that if we understand the relationships present in a specific shape, we can scale for whatever we're working on.
+	+ There are two specific triangles that it's very easy to know a lot about. They both come from fundamental shapes:
+		= Show a square being cut diagonally (creates 45-45-90)
+		= Show an equilateral triangle being cut (creates 30-60-90)
+	+ These triangles show up a lot in engineering, and they're deeply tied to things we'll use regularly as we get farther in Trigonometry.
+
+- 45-45-90 Triangle
+	+ Explain diagram with 's' for short legs and s*sqrt(2) for hypotenuse.
+	+ Give example of knowing one leg, filling in other two.
+	+ Give example where we know hypotenuse, find legs.
+		= Example should be "clean": hypotenuse will have a factor of sqrt(2) that will divide out to produce a nice natural number.
+		= Work this example both in terms of dividing by sqrt(2) and setting up a simple algebra equation to solve for 's'.
+
+- 30-60-90 Triangle
+	+ Explain diagram with 's' for short leg, s*sqrt(3) for long leg, and 2*s for hypotenuse.
+	+ Point out importance of being careful to know which leg you're dealing with.
+		= Unlike 45-45-90, where the legs are matched, here you have to pay attention to opposite angles.
+		= Recommend that, when working 30-60-90 problems, always find the short leg first ('s'), then move on to whatever else you need to find. [This is not a requirement, but a strategy recommendation.]
+	+ Give example where we know one short leg, fill in other two
+	+ Give example where we know hypotenuse, fill in other two
+		= Point out that it's easier to find the short leg then go to long leg rather then trying to directly solve for long leg.
+	+ Give example where we know long leg, fill in other two
+		= Unlike above "clean" examples, this one will purposefully be a natural number on the long leg to force division by sqrt(3) in the other expressions.
+		= Afterwards, remark on the fact that most teachers will want expressions rationalized. Show how to rationalize.
+		= Note that if they want more help with square roots and rationalizing, they can check out the Extra Video on "Radicals and Rationalizing"
+
+
+=========================
+Advanced Understanding (non-essential concepts, proofs, etc.)
+=========================
+- Proof of 45-45-90
+	+ Create a 45-45-90 triangle with one leg side as 's'.
+	+ This is an isosceles triangle, so now know both legs are 's'.
+	+ Apply Pythag Thm to find hypotenuse.
+
+- Talk about sqrt(2)
+	??? Is it worth it to discuss sqrt(2) here? On the one hand, it's an appropriate time to do so and sqrt(2) is a useful value to be familiar with for doing rough mental math approximations. On the other hand, I worry about length and distracting from the major points. 
+	+ Remark that sqrt(2) has a tendency to pop up in a number of places. It's related to the diagonal of a square, so it shows up pretty often.
+	+ As such, it's good to have a sense for what it represents. Remember, sqrt(2) is irrational (appeal to the never-ending decimal expansion).
+	+ Show long decimal expansion, note that a decent approximation is 1.414. Remembering the approximation can be handy for doing mental math.
+
+- Proof of 30-60-90
+	+ Begin with equilateral triangle, side length of '2s'
+		??? Do you think it would be better to have the equilateral have a side length without a coefficient (such as simply 'ell' or 'x'), then once everything is proven, do a substitution at the end? Or would it be better to leave the side length as '2s', and have the split down the middle cut it in half to just the 's' we expect from the 30-60-90 diagram?
+	+ Split down "middle" with a perpendicular
+	+ Note 30-60-90 and that short leg is now 1s = s.
+	+ Apply pythag thm to find long leg.
+
+??? Talk about sqrt(3)
+	??? I feel like if I talk about sqrt(2) above, I'm sort of forced to remark about sqrt(3) as well [since it just showed up]. On the other hand, it's (at least in my opinion), way less valuable to know about than sqrt(2). At the moment, I'm leaning towards just not discussing it at all. If I do discuss it, it would be much shorter and probably say that it shows up some, but less often than sqrt(2). Just being aware that sqrt(3) is between 1 and 2 is usually enough for it.
+
+- Discuss deconstructing shapes into simpler geometric objects
+	+ There is a common type of problem where you take a more complex shape and break it into simpler shapes that you can work with.
+		= Brief example of an L shaped object. No formula for L shapes, but we can cut across to turn it into two rectangles.
+	+ Remark that special right triangles often wind up being connected to these types of problems, so it's good to be aware of how to approach them.
+		= Brief example of finding area for an equilateral triangle: know one side length, cut down middle, voila, 30-60-90 triangles to work with.
+	+ Point out that when you need to find the area of something that is an "unusual" shape, you can often find a way to cut it into shapes that you're more used to working with. Don't forget to use any symmetries that you're aware of to your advantage!
+		= Mention that we see a more challenging example along these lines in the Problems.
+
+- Remarks on skipping over finding short leg when working 30-60-90 triangles
+	??? I'm unsure if this is needed, but I feel like it might be good to point out. I don't want students to think that you can't directly solve from the 60-side to the 90-side (or vice-versa), but I'm wary of teaching it because it tends to allow for more silly mistakes to be made. What do you think? Is it worth it to remark on for an expanded understanding, or can I just let a brief recommendation along those lines in the Basic Lesson be enough?
+	+ Show that you can solve directly from long leg to hypotenuse (or vice-versa) on a 30-60-90 triangle. Do both in terms of the fundamental diagram from the Basic Lesson and also with a very simple example.
+	+ Remark that, while possible to do, it generally makes it a lot easier to mess up. There's nothing inherently wrong with it, but the possibility of accidentally swapping multiplication with division generally makes it a better choice to always find the short leg first then work out whatever remains.
+
+
+
+=========================
+Practice Problems [ * corresponds to difficulty, out of 3]
+=========================
+- (* and **) 2x 45-45-90 problems: one begins with a leg, one begins with hypotenuse
+
+- (* and **) 3x 30-60-90 problems: one begins with short leg, one begins with hypotenuse, one begins with long leg
+
+		[For above problems, they'll be mixed between 45-45-90 and 30-60-90. Of the five total, the first two will be very easy, "clean" problems. The latter three will involve decimals, fractions, and even radicals that stay "dirty".]
+
+- (**) 1x Simple algebra problem on 30-60-90 triangle
+
+- (**) Mix of two 30-60-90 triangles with a 45-45-90 glued between them
+	= See #2 on this page for a better idea: http://www.regentsprep.org/regents/math/algtrig/att2/pracspecial.htm
+
+- (***) Find the area of a regular hexagon
+	= In statement, have "Reminder: Regular <--> all sides and angles are congruent"
+	= Work this problem carefully with clear break down and diagramming of approach.
+
+
+=========================
+Quick Review (very fast overview of essentials)
+=========================
+- Diagram of 45-45-90 right triangle
+	+ Quick example of using it if you know a leg
+
+- Diagram of 30-60-90 right triangle
+	+ Quick example of using it if you know short leg
+	+ Point out that if you know a different side, find the short leg first
+	+ Quick example of using if you know long leg
+		= "Dirty" result from dividing by sqrt(3)
+
+- Mention that these problems will often involve dividing by square roots (such as the preceding example)
+	= As such, it's important to be familiar with how roots work and (if your teacher requires it) rationalizing denominators.
+	= Point out that there's an Extra Video that covers that if they're in need of a refresher.
+
+
+=========================
+Extra: Roots and Rationalizing
+=========================
+- Brief, brief reminder of square roots
+	+ Remember that a square root is the number that, when it multiplies itself, makes whatever was under the root. The reason why the square root of 9 is 3 is because 3*3=9, etc.
+	+ It's good to make sure you have the first ten squares all memorized. List them.
+	+ If two identical square roots are multiplied, the roots "cancel" and we're just left with what was "inside". 
+
+- Brief reminder of simplifying square roots
+	+ Mention that there are various ways to approach this, below is not the only way.
+	+ Focus on "dividing out squares" and putting them in front of root
+		= That's a little simplistic in terms of phrasing, but the work will go like this:
+			sqrt(75) = sqrt(25*3) = 5*sqrt(3)
+
+- Remind how to work arithmetically:
+	+ Square roots can multiply or divide each other to "get inside"
+		= Quick, simple example
+	+ Square roots do NOT "get inside" via subtraction or division
+		= Quick, simple non-example that gets struck down
+
+- Rationalizing denominators
+	+ Most teachers in most classrooms will not want you to have roots in the denominator
+	+ How do we get rid of roots? Remember, multiplying a root by itself "cancels" it out. Also, fractions allow us to multiply by anything, so long as we multiply the top and bottom by the same thing. Voila!
+	+ We call this process "rationalizing". Why? Because something that has to be under a square root is an irrational number, so by getting rid of the square root, you are making it rational.
+	+ Run two or three examples of varying difficulties.
+
+- Why do we rationalize denominators?
+	+ Basically, we do it for historical reasons. Long ago, in the dark ages, before the time of calculators, we had to do all our arithmetic by hand. Simply put, it's way harder to divide by a square root than it is to multiply by it. If you're working with longish decimals numbers, it's a lot easier to do multiplication than division. So, we used to rationalize the denominators to make the arithmetic easier.
+	+ "But why do we do it now?" Good question, bad answer: because of social inertia. Frankly, there's not much reason to do it if you have access to calculators. All that stuff about tough arithmetic is still true, but now we have calculators, so... yeah. Sorry.
+		= There is actually one current benefit: it allows for a clearer "standard form" when writing. This causes certain things to be easier to work with and also makes it easier to check for correct answers.
+	+ Chances are, once you hit Calculus or a little higher, all of a sudden no one will care about rationalizing anymore. Like I said before, Sorry.
+
+	??? Hopefully the above doesn't come off as too snarky (I'll make sure it's under control in the actual video), but I've always had a bit of a chip on my shoulder for enforcing rationalizing. As far as I'm aware, it only really has three uses:
+		* It gives a clear standard form for solutions and makes it a bit easier to notice possible routes of simplification.
+		* It is similar to a technique used in complex numbers (multiplying by conjugate)
+		* It is similar to a technique used in working with certain specific kinds of limits in calculus.
+	Still, I don't think those three reasons are strong enough to warrant the amount of emphasis it seems to normally get in math education. The idea is kind of neat, but really, it's better for students to just think of roots as just another number. I think pushing rationalization so hard actually lessens this understanding of roots as numbers. Thoughts? Should I back off and be more vague? Is it alright to tell students that they're being taught something pretty much due to bureaucratic inefficiency?
+		* Here is a very nice write-up by someone, probably the level of explanation I want to use and a lower level of snark: http://mathforum.org/library/drmath/view/68610.html

@@ -1,0 +1,38 @@
+Chipmunk Math
+Trigonometry
+
+LESSON_NAME_GOES_HERE
+Lesson Plan v1
+TODAYS_DATE_GOES_HERE
+
+
+=========================
+Lesson (basic and essential concepts)
+=========================
+- Things
+
+- Things
+
+
+=========================
+Advanced Understanding (non-essential concepts, proofs, etc.)
+=========================
+- MoreThings
+
+- MoreThings
+
+
+=========================
+Practice Problems [ * corresponds to difficulty, out of 3]
+=========================
+- MoarThings
+
+- MoarThings
+
+
+=========================
+Quick Review (very fast overview of essentials)
+=========================
+- FewThings
+
+- FewThings

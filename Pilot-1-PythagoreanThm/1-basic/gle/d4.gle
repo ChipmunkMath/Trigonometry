@@ -1,0 +1,73 @@
+! Geometry Template
+	!Template developed with expectation of mainly producing geometric diagrams.
+
+size 10 10 !Size of canvas. [Square]
+		! Canvas size is not super important by itself, but everything done in GLE is in reference to that. As such, following commands are set from that value.
+		! Can think of it taking up around 60% of slide vertical and 40% of horiztonal
+
+set font rm !Sets font as "Roman" (GLE's standard default font)
+		! Fonts are not extensible in GLE. This will work decently, though.
+		! If you want to switch to writing italics (for math variables), use either
+			! 'rmi' as the font (Roman Italic)
+			! \it while in a 'text' command to switch to italics
+				! Similarly, \rm in a 'text' command switches to roman
+
+				set font rmi
+
+
+				set hei 0.9
+
+				set just cc
+
+
+
+!!! Right Angle Corner Maker !!!
+	set lwidth 0.045
+	amove 9 3 ! Corner where right-angle occurs
+	rmove -0.5 0
+	rline 0 0.5
+	rline 0.5 0
+!!! End right angle corner maker!!!
+
+
+set lwidth 0.07 !Sets width of lines
+		! Set in conjunction with size of canvas. This is a good size for geometric borders. If making a graph, would want a smaller size.
+
+set join mitre !Sets how lines are joined
+		! Using mitre makes for sharp corners, as is expected in geometry diagrams.
+
+
+
+
+amove 0.5 3
+aline 9 3
+aline 9 8
+aline 0.5 3
+aline 9 3
+
+set color mediumblue
+amove 0.5 3
+aline 9 3
+
+set color darkturquoise
+aline 9 8
+
+set color red
+!aline 0.5 3
+
+amove 4.73 6.21
+
+begin rotate 30.4655
+!text c
+end rotate
+
+
+set color mediumblue
+amove 4.75 2.4
+text a
+
+set color darkturquoise
+amove 9.45 5.5
+text b
+
+

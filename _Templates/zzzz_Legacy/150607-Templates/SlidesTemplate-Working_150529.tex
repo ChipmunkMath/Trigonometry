@@ -1,0 +1,58 @@
+%!TEX program = xelatex
+\documentclass[12pt, aspectratio=169]{beamer}
+	% 12pt: Increase base text size to make reading easier.
+	% aspectratio=169: Gives aspect ratio of 16:9 for better screen use and matching most commonly used aspect ratios. (Arguable that 1610 would be better, but the die is cast.)
+
+
+\usetheme[nooffset, noslidenumbers, blockbg]{m}
+	% Theme showed by 'm' is "mtheme". It is a non-standard Beamer theme.
+		% Theme was made by Matthias Vogelgesang. Thanks to him and other contributers.
+		% Can find theme on GitHub: https://github.com/matze/mtheme
+	% nooffset: Prevents mtheme from adding \vspace{2em} vertical offset at top of slides
+	% noslidenumbers: Omits slide numbers on all slides
+
+	\setbeamertemplate{blocks}[rounded][shadow=true]
+	% This rounds blocks and gives a dropshadow to blocks.
+		% Note the slightly odd presentation of options here. This has to be done.
+			% If combined to [option1, option2], it actually breaks both. Go figure.
+
+
+%%% Package loadout and descriptions %%%
+\usepackage{graphicx} % Allows insertion of images
+\usepackage{xcolor} % Enables the ability to work with colors
+\usepackage{mathtools} % Loads various math things
+	% Package above loads 'amsmath', a very useful package to load for math typesetting
+\usepackage{booktabs} % Helps make prettier tables
+\usepackage{array} % Helps make better, more customizable arrays/tables
+\usepackage{siunitx} % Typeset SI units nicely
+\usepackage{wasysym} % Various symbols, specifically \photon for squiggles
+\usepackage[scale=2]{ccicons} %Creative Commons icons
+
+
+%%% Standardized spacing commands %%%
+		%%% This is a bit of a hack, but it's important for spacings to look consistent. As such, here is a "standardized" set of vspace sizes. Try to use them in a consistent manner as you build slides.
+\newcommand{\as}{\vspace{0.1cm}} % A *small* space.
+\newcommand{\bs}{\bigskip} % Good ol' \bigskip, just shorter for writing.
+\newcommand{\cs}{\vspace{1cm}} % A *large* space for clear separation of ideas.
+\newcommand{\zs}{\vspace{-0.3cm}} % A negative space for tightening things as needed.
+
+
+
+\title{Remember to Make a Title!}
+\date{}
+
+
+
+\begin{document}
+
+\begin{frame}
+\maketitle
+\end{frame}
+
+
+\begin{frame}\frametitle{BabysFirstFrame}
+    
+\end{frame}
+
+
+\end{document}
