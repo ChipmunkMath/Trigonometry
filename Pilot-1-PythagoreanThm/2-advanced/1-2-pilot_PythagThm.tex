@@ -1,0 +1,853 @@
+%!TEX program = xelatex
+	% Above tells TeX compiler to use xelatex. Necessary because can't manually set due to working in SublimeText and using LaTeXTools.
+
+\documentclass[14pt, aspectratio=169, svgnames, xetex, rgb]{beamer}
+	% 14pt: Increase base text size to make reading easier (important for math eqns)
+	% aspectratio=169: Gives aspect ratio of 16:9 for better screen use and matching most commonly used aspect ratios. (Arguable that 1610 would be better, but the die is cast.)
+	% svgnames: This one is a little surprising. It's not actually a Beamer option, it's an option for the 'xcolor' package. However, since Beamer loads that package on start, this option needs to be given now to be passed down to 'xcolor'. If you try to give the option to 'xcolor' (below), it will throw error warnings.
+				% See note about 'svgnames' under 'xcolor' for usage regarding GLE.
+	% xetex: Another 'xcolor' option like 'svgnames' is. This is perhaps totally unnecessary, but this sets the color driver. Since compiling is done with xelatex, it seemed like 'xetex' was the best choice.
+	% rgb: Another 'xcolor' option like 'svgnames' is. This is perhaps totally unnecessary, but this chooses the target color model. Since all output is designed for monitor display, this seems like the best choice.
+
+
+\usetheme[nooffset, noslidenumbers, blockbg]{m}
+	% Theme showed by 'm' is "mtheme". It is a non-standard Beamer theme.
+		% Theme was made by Matthias Vogelgesang. Thanks to him and other contributers.
+		% Can find theme on GitHub: https://github.com/matze/mtheme
+	% nooffset: Prevents mtheme from adding \vspace{2em} vertical offset at top of slides
+	% noslidenumbers: Omits slide numbers on all slides
+
+\usefonttheme{dailyplanet}
+		% Self-devolped modification of font theme for Metropolis. Likely to change names in a future version. If you're trying to compile this in the future and it breaks, take a look in the docs for 'metropolis' / 'mtheme' theme style for Beamer. Look for alternate font themes. You'll want the one that mainly uses Fira Sans Book. Have fun finding it! :-D
+
+	\setbeamertemplate{blocks}[rounded][shadow=true]
+	% This rounds blocks and gives a dropshadow to blocks.
+		% Note the slightly odd presentation of options here. This has to be done.
+			% If combined to [option1, option2], it actually breaks both. Go figure.
+
+
+%%% Package loadout and descriptions %%%
+\usepackage{graphicx} % Allows insertion of images
+\usepackage{xcolor} % Enables the ability to work with colors
+	% Loading this package here is redundant because it's loaded with Beamer. However, if you switch to a different documentclass, you will need this. You will also need to migrate the 'svgnames' option in to this package call for GLE matching (see below).
+	% [Migrating the 'rgb' option is up to you depending on new purpose.]
+		% Option of 'svgnames' (given with documentclass) loads color definitions for SVG set of colors. The SVG set of colors is what GLE (the program drawing most images) defaults to using. If you use these colors, you'll get color matching...
+			% HOWEVER! To use these colors, you must write them with CAPITAL letters. 'green' (non-GLE) has a different definition than 'Green' (GLE matched).
+\usepackage{mathtools} % Loads various math things
+	% Package above loads 'amsmath', a very useful package to load for math typesetting
+\usepackage{booktabs} % Helps make prettier tables
+\usepackage{array} % Helps make better, more customizable arrays/tables
+\usepackage{siunitx} % Typeset SI units nicely
+\usepackage{wasysym} % Various symbols, specifically \photon for squiggles
+\usepackage[scale=2]{ccicons} %Creative Commons icons
+\usepackage{fontawesome} % Provides social media icons. REQUIRES: 'fontspec' and XeTeX
+	% IMPORTANT NOTE: 'fontawesome' package will kill your compile if you do not have the "fontawesome" font installed to your computer. Comment or delete if you do not have that font on your computer.
+\usepackage{comment} % Provides a comment environment. Used to omit frames during compile.
+
+
+		\usepackage{relsize}
+		\usepackage{exscale}
+		% Above two packages are specific to this lesson to get larger sizes of \measuredangle available. ('exscale' may be unnecessary)
+
+
+%%% Standardized spacing commands %%%
+		%%% This is a bit of a hack, but it's important for spacings to look consistent. As such, here is a "standardized" set of vspace sizes. Try to use them in a consistent manner as you build slides.
+\newcommand{\as}{\vspace{0.1cm}} % A *small* space.
+\newcommand{\bs}{\bigskip} % Good ol' \bigskip, just shorter for writing.
+\newcommand{\cs}{\vspace{1cm}} % A *large* space for clear separation of ideas.
+\newcommand{\zs}{\vspace{-0.3cm}} % A negative space for tightening things as needed.
+
+%%% Special commands %%%
+\newcommand{\rad}[1][]{\sqrt[#1]{ \phantom{x} \hspace{-0.25em} }} % "Calculator" radical
+	% Need a sign to show doing a root on a calculator. \surd doesn't look quite right, so made this instead. Creates a free-standing radical sign with a bit of empty space.
+		% Usage: \rad for a square root, \rad[#] to indicate a #-th root.
+\newcommand{\?}{\overset{?}{=}} % Equals sign with '?' overset on it.
+	% Regularly have problems come up where you're verifying that an equation is actually true. Use this there. REQUIRES: 'amsmath' package (covered by 'mathtools' above).
+
+
+
+%%% Answer Boxing Command %%%
+	%%% Don't have a way to do this figured out yet. Just using a dummy command to help me find and replace later.
+	\newcommand<>{\answerbox}[1]{\alert#2{#1}}
+
+
+
+
+\begin{document}
+
+						%\begin{comment}
+						% This starts a very long comment environment. It is ended just before whatever current frame(s) is(are) being worked on. For long documents, this enables a faster compiling time.
+						% Look for matching end comment near bottom of document.
+
+%%% Title Frame %%%
+	% Note that Title Frame formatting was created as a one-off. It could be ported forward, but might want to create something long-lasting in the future that can be executed via '\maketitle'.
+\begin{frame} 
+\large
+\textsc{Trigonometry}
+
+\vspace{0.7cm}
+
+\LARGE
+\textcolor[HTML]{EB811B}{\underline{\textcolor[HTML]{23373b}{The Pythagorean Theorem}}}
+
+\large
+\textbf{Advanced Understanding}
+
+
+\vspace{1.3cm}
+
+\begin{flushright}
+\Large \raisebox{0.8cm}{Chipmunk Math}\,\,\includegraphics<1->[width=0.15\textwidth]{../../chipmunk-transparent.png}
+\end{flushright}
+
+\vspace{-1.5cm}
+\end{frame}
+
+
+
+		%%%%%% Start of Teaching Frames %%%%%%
+
+
+
+
+\begin{frame}\frametitle{Proving the Pythagorean Theorem}
+    In the lesson, we saw the \emph{Pythagorean Theorem}, but we didn't see \textbf{why} we should believe it's true.
+    \pause
+
+    \bs
+
+    \underline{Let's prove it!}\pause
+
+    \bs
+
+    (So many ways to prove: what follows is just one of many.)
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+
+\begin{frame}\frametitle{Proof: Pythagorean Theorem --- Set-Up}
+    
+	
+
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+
+\begin{frame}\frametitle{Proof --- ANIMATION DUMMY}
+
+\vspace{-1cm}
+\begin{center}
+	\includegraphics<1>[width=0.6\textwidth]{animations/a1-still-letters.png}
+	\includegraphics<2>[width=0.6\textwidth]{animations/a2-manytris/a2-manytris_0.png}
+	\includegraphics<3>[width=0.6\textwidth]{animations/a2-manytris/a2-manytris_29.png}
+	\includegraphics<4>[width=0.6\textwidth]{animations/a3-makesquare/a3-makesquare_43.png}
+	\includegraphics<5>[width=0.6\textwidth]{animations/a3-makesquare/a3-makesquare_89.png}
+	\includegraphics<6>[width=0.6\textwidth]{animations/a4-still-squareletters.png}
+\end{center}
+
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+
+\begin{frame}\frametitle{Proof: Pythagorean Theorem}
+
+\begin{columns}
+
+	\begin{column}{0.6\textwidth}
+		
+	\end{column}
+
+
+				%%% Column Break %%%
+
+
+	\begin{column}{0.4\textwidth}
+	\begin{center}
+		\includegraphics<1>[width=0.9\textwidth]{images/d1-triangleangles.png}
+		\includegraphics<2>[width=0.9\textwidth]{images/d2-colorangles.png}
+	\end{center}
+
+		\vspace{-1.2cm}
+
+		\pause
+		\large
+		\begin{equation*}
+			\mathlarger{\mathlarger{\textcolor{Green}{\measuredangle}}} + \mathlarger{\mathlarger{\textcolor{Orange}{\measuredangle}}} \, = \, \ang{90}
+		\end{equation*}
+	\end{column}
+
+\end{columns}
+    
+	
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+
+\begin{frame}\frametitle{Proof: Pythagorean Theorem -- ANIMATION DUMMY}
+ \begin{columns}
+ 
+ 	\begin{column}{0.6\textwidth}
+ 		\includegraphics<1-2>[width=\textwidth]{animations/a4-still-squareletters.png}
+ 		\includegraphics<3>[width=\textwidth]{animations/a5-still-angles.png}
+ 		\includegraphics<4>[width=\textwidth]{animations/a6-still-rightangles.png}
+ 		\includegraphics<5>[width=\textwidth]{animations/a6-z-still-smallrights.png}
+ 	\end{column}
+ 
+ 
+ 				%%% Column Break %%%
+ 
+ 
+	\begin{column}{0.4\textwidth}
+	\begin{center}
+		\includegraphics<1>[width=0.9\textwidth]{images/d1-triangleangles.png}
+		\includegraphics<2-4>[width=0.9\textwidth]{images/d2-colorangles.png}
+	\end{center}
+
+		\vspace{-1.2cm}
+
+		\onslide<2-4>{
+		\large
+		\begin{equation*}
+			\mathlarger{\mathlarger{\textcolor{Green}{\measuredangle}}} + \mathlarger{\mathlarger{\textcolor{Orange}{\measuredangle}}} \, = \, \ang{90}
+		\end{equation*}}
+	\end{column}
+ 
+ \end{columns}
+
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+
+\begin{frame}\frametitle{Proof: Pythagorean Theorem -- ANIMATION DUMMY}
+    
+	\begin{columns}
+	
+		\begin{column}{0.55\textwidth}
+			\includegraphics<1>[width=\textwidth]{animations/a7-still-colorbigsq.png}
+			\includegraphics<2>[width=\textwidth]{animations/a7-z-still-bothcolors.png}
+			\includegraphics<3>[width=\textwidth]{animations/a7-still-colorbigsq.png}	
+			\includegraphics<4>[width=\textwidth]{animations/a8-still-color-tris.png}	
+			\includegraphics<5>[width=\textwidth]{animations/a9-still-colorsmallsq.png}	
+			\includegraphics<6>[width=\textwidth]{animations/a10-still-colortri.png}	
+			\includegraphics<7>[width=\textwidth]{animations/a7-still-colorbigsq.png}	
+			\includegraphics<8>[width=\textwidth]{animations/a10-still-colortri.png}	
+			\includegraphics<9>[width=\textwidth]{animations/a9-still-colorsmallsq.png}	
+		\end{column}
+	
+	
+					%%% Column Break %%%
+	
+	
+		\begin{column}{0.45\textwidth}
+		\large
+			\begin{equation*}
+				\onslide<3->{
+				\textcolor{Indigo}{A_{\text{\footnotesize big \raisebox{-0.05em}{$\square$}}}}
+				}
+				\onslide<4->{
+				\, \, = \, \,
+				\textcolor{Red}{A_{\text{\footnotesize all $\triangle$s}}}
+				\, + \, 
+				}
+				\onslide<5->{
+				\textcolor{Blue}{A_{\text{\footnotesize small \raisebox{-0.05em}{$\square$}}}}
+				}
+			\end{equation*}
+
+			\vspace{-2.3cm}
+
+			\onslide<6->{
+			\begin{equation*}
+				\textcolor{Indigo}{A_{\text{\footnotesize big \raisebox{-0.05em}{$\square$}}}}
+				\, \, = \, \,
+				4 \cdot \textcolor{Red}{A_{\text{\footnotesize $\triangle$}}}
+				\, + \, 
+				\textcolor{Blue}{A_{\text{\footnotesize small \raisebox{-0.05em}{$\square$}}}}
+			\end{equation*}
+			}
+
+			\normalsize
+
+			\vspace{-1cm}
+
+			\onslide<7->{
+			\begin{equation*}
+				\textcolor{Indigo}{(a+b)^2} \, = \, \onslide<8->{4\cdot \left( \textcolor{Red}{\tfrac{1}{2} a\cdot b} \right) +} \onslide<9->{\textcolor{Blue}{c^2}}
+			\end{equation*}
+			}
+			
+		\end{column}
+	
+	\end{columns}
+
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+
+\begin{frame}\frametitle{DEAD AIR}
+    
+	{\huge Take a breather, Tiger.}
+
+	This slide is just to say that we're going to re-walk the previous part with blank space on the left. You'll start talking again after the area equation finishes being written out with \textcolor{Blue}{$c^2$}.
+
+	\bs
+
+	You'll trim all the dead air, natch.
+
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+
+\begin{frame}\frametitle{Proof: Pythagorean Theorem --- Area}
+    
+	\begin{columns}
+	
+		\begin{column}{0.55\textwidth}
+			
+		\end{column}
+	
+	
+					%%% Column Break %%%
+	
+	
+		\begin{column}{0.45\textwidth}
+		\large
+			\onslide<2->{
+			\begin{align*}
+				\textcolor{Indigo}{A_{\text{\footnotesize big \raisebox{-0.02em}{$\square$}}}} & \onslide<3->{= \textcolor{Red}{A_{\text{\footnotesize all $\triangle$s}}} \,+\,} \onslide<4->{\textcolor{Blue}{A_{\text{\footnotesize small \raisebox{-0.02em}{$\square$}}}}}\\
+				\onslide<5->{
+				\textcolor{Indigo}{A_{\text{\footnotesize big \raisebox{-0.02em}{$\square$}}}}
+				&=
+				4 \cdot \textcolor{Red}{A_{\text{\footnotesize $\triangle$}}}
+				\,+\,
+				\textcolor{Blue}{A_{\text{\footnotesize small \raisebox{-0.02em}{$\square$}}}}
+				}
+			\end{align*}
+			}
+
+			\vspace{-1cm}
+			\normalsize
+			\onslide<6->{
+			\begin{equation*}
+				\textcolor{Indigo}{(a+b)^2} \, = \, \onslide<7->{4\cdot \left( \textcolor{Red}{\tfrac{1}{2} a\cdot b} \right) +} \onslide<8->{\textcolor{Blue}{c^2}}
+			\end{equation*}
+			}
+		\end{column}
+	
+	\end{columns}
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+
+\begin{frame}\frametitle{Proof: Pythagorean Theorem --- Algebra}
+    
+	\begin{columns}
+	
+		\begin{column}{0.7\textwidth}
+			\begin{align*}
+				\onslide<1->{  \textcolor<1>{Indigo}{(a+b)^2}   &=   4\cdot \left( \textcolor<1>{Red}{\tfrac{1}{2} a\cdot b} \right) + \textcolor<1>{Blue}{c^2}  } \\
+				\onslide<2->{(a+b)(a+b) &= 2ab + c^2  }\\
+				\onslide<3->{a^2 + ab + ba + b^2 &= 2ab + c^2  }\\
+				\onslide<4->{a^2 + \textcolor<5>{IndianRed}{2ab} + b^2 &= \textcolor<5>{IndianRed}{2ab} + c^2  }\\
+				\onslide<6->{ \answerbox<7->{a^2 + b^2} &  \answerbox<7->{= c^2}}
+			\end{align*}
+
+
+		\end{column}
+	
+	
+					%%% Column Break %%%
+	
+	
+		\begin{column}{0.3\textwidth}
+			\includegraphics<8->[width=0.9\textwidth]{images/d1-triangleangles.png}
+		\end{column}
+	
+	\end{columns}
+
+	\bs
+
+	\onslide<8->{
+	This logic would work for any right triangle.}
+	\onslide<9->{Therefore it must be the case that $a^2+b^2 = c^2$ for all right triangles. \qed}
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+
+\begin{frame}\frametitle{DEAD AIR}
+
+	{\huge Take a breather, Tiger.}
+
+	The next few slides are all animation ready slides, but not so useful for doing VO. As such, you should skip forward six slides until you reach
+	\[
+		a^2 +b^2 > c^2
+	\]
+
+	After that, take a breath, and get ready to start again. You'll be talking about how we can ``go farther'' with the \textbf{Pythagorean Converse}.
+
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+
+\begin{frame}\frametitle{Pythagorean Converse and Inequalities}
+    
+	\begin{columns}
+	
+		\begin{column}{0.55\textwidth}
+			
+		\end{column}
+	
+	
+					%%% Column Break %%%
+	
+	
+		\begin{column}{0.45\textwidth}
+			\onslide<1-2>{Consider a right triangle:}
+			\zs
+			\begin{equation*}
+				\onslide<1-2,4-5>{a^2+b^2 = c^2}
+			\end{equation*}
+
+
+			\begin{overlayarea}{\textwidth}{2cm}
+					\only<2-3>{What would happen if we ``stretched'' out $c$ a bit?}
+					\only<5-6>{What would happen if ``shrank'' $c$ down some?}
+					\begin{equation*}
+							\only<3>{a^2 + b^2 \alert{<} c^2}
+							\only<6>{a^2 + b^2 \alert{>} c^2}
+					\end{equation*}		
+			\end{overlayarea}
+		\end{column}
+	
+	\end{columns}
+
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+
+\begin{frame}\frametitle{Pythag Conv. and Inequals -- ANIMATION DUMMY}
+    
+		\begin{columns}
+	
+		\begin{column}{0.55\textwidth}
+			\includegraphics<1-2,4-5>[width=0.9\textwidth]{animations/a11-clengthen/a11-clengthen_0.png}
+			\includegraphics<3>[width=0.9\textwidth]{animations/a11-clengthen/a11-clengthen_44.png}
+			\includegraphics<6>[width=0.9\textwidth]{animations/a12-cshrink/a12-cshrink_44.png}
+		\end{column}
+	
+	
+					%%% Column Break %%%
+	
+	
+		\begin{column}{0.45\textwidth}
+			\onslide<1-2>{Consider a right triangle:}
+			\zs
+			\begin{equation*}
+				\onslide<1-2,4-5>{a^2+b^2 = c^2}
+			\end{equation*}
+
+
+			\begin{overlayarea}{\textwidth}{2cm}
+					\only<2-3>{What would happen if we ``stretched'' out $c$ a bit?}
+					\only<5-6>{What would happen if ``shrank'' $c$ down some?}
+					\begin{equation*}
+							\only<3>{a^2 + b^2 \alert{<} c^2}
+							\only<6>{a^2 + b^2 \alert{>} c^2}
+					\end{equation*}		
+			\end{overlayarea}
+		\end{column}
+	
+	\end{columns}
+
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+
+\begin{frame}\frametitle{Triangle Test: Right, Obtuse, or Acute?}
+    
+	\begin{columns}
+	
+		\begin{column}{0.35\textwidth}
+			\includegraphics<1,5>[width=\textwidth]{images/d99.png}
+			\includegraphics<2>[width=\textwidth]{animations/a11-clengthen/a11-clengthen_0.png}
+			\includegraphics<3>[width=\textwidth]{animations/a11-clengthen/a11-clengthen_44.png}
+			\includegraphics<4>[width=\textwidth]{animations/a12-cshrink/a12-cshrink_44.png}
+		\end{column}
+	
+	
+					%%% Column Break %%%
+	
+	
+		\begin{column}{0.65\textwidth}
+			\begin{block}{Pythagorean Converse with Inequalities}
+				For any triangle that has side lengths of $a$, $b$, and $c$, where $c$ is the longest side:
+				\begin{equation*}
+					\begin{array}{ccl}
+						\onslide<2->{a^2 + b^2 \alert<2>{=} c^2 & \Longleftrightarrow & \text{\alert<2>{Right} triangle} \\[0.25cm]}
+						\onslide<3->{a^2 + b^2 \alert<3>{<} c^2 & \Longleftrightarrow & \text{\alert<3>{Obtuse} triangle} \\[0.25cm]}
+						\onslide<4-5>{a^2 + b^2 \alert<4>{>} c^2 & \Longleftrightarrow & \text{\alert<4>{Acute} triangle} \\[0.25cm]}
+					\end{array}
+				\end{equation*}
+
+				\vspace{-1.25cm}
+
+			\end{block}
+		\end{column}
+	
+	\end{columns}
+
+
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+
+\begin{frame}\frametitle{Pythagorean Converse with Inequalities --- Example}
+    
+	\begin{columns}
+	
+		\begin{column}{0.5\textwidth}
+			\includegraphics<1-2>[width=\textwidth]{images/d3.png}	
+			\includegraphics<3>[width=\textwidth]{images/d4.png}	
+			\includegraphics<4-10>[width=\textwidth]{images/d5.png}	
+			\includegraphics<11->[width=\textwidth]{images/d6.png}	
+		\end{column}
+	
+	
+					%%% Column Break %%%
+	
+	
+		\begin{column}{0.5\textwidth}
+			\onslide<2->{Identify the longest side ($c$).}
+			\vspace{1.1cm}
+
+			\onslide<5->{Compare $a^2 + b^2$ with $c^2$:}
+			\vspace{-0.2cm}
+
+			\begin{equation*}
+				\begin{array}{ccc}
+					\onslide<6->{a^2 + b^2   & \only<6-9>{??} \only<10->{\alert<10>{<}} &   c^2 \\}
+					\onslide<7->{5^2 + 6^2   &   \only<6-9>{??} \only<10->{<}  &   8^2 \\}
+					\onslide<8->{25 + 36   &   \only<6-9>{??} \only<10->{<}  &   64 \\}
+					\onslide<9->{ 61   &   \only<6-9>{<} \only<10->{<}   &   64 }
+				\end{array}
+			\end{equation*}
+
+			\onslide<11->{Thus the triangle is \answerbox{obtuse}.}
+		\end{column}
+	
+	\end{columns}  
+
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+
+\begin{frame}\frametitle{Proof of Pythagorean Converse}
+    
+	The converse of the Pythagorean theorem \emph{seems} reasonable, but in math we want \textbf<1>{\alert<1>{proof}}!
+	\pause
+
+	\underline{Let's prove it!}
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+
+\begin{frame}\frametitle{Reminder of Pythagorean Converse}
+    \begin{center}
+	\large \underline{Converse of Pythagorean Theorem}
+	\end{center}
+	\bs
+
+	\begin{columns}
+	
+		\begin{column}{0.4\textwidth}
+			\includegraphics<1>[width=\textwidth]{images/d7.png}
+			\includegraphics<2>[width=\textwidth]{images/d8.png}
+		\end{column}
+	
+	
+					%%% Column Break %%%
+	
+	
+		\begin{column}{0.6\textwidth}
+			\quad \textbf{\underline{If}} we have a triangle where\[\alert<1>{a^2+b^2 = c^2},\]
+			\pause
+			\zs
+
+			\qquad \quad \textbf{\underline{Then}} it's a \alert{right triangle}.
+		\end{column}
+	
+	\end{columns}
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+
+\begin{frame}\frametitle{Proof of Pythagorean Converse}
+    
+	\begin{columns}
+	
+		\begin{column}{0.35\textwidth}
+
+			\vspace{0.2cm}
+
+			\onslide<2->{\underline{\textbf{Given}: $\alert<14>{a^2 + b^2 = c^2}$}}
+			\zs
+
+			\includegraphics<1-2,4-5,8->[width=\textwidth]{images/d9.png}
+			\includegraphics<3>[width=\textwidth]{images/d9-z-question.png}
+			\includegraphics<6>[width=\textwidth]{images/d10.png}
+			\includegraphics<7>[width=\textwidth]{images/d11.png}
+		\end{column}
+	
+	
+					%%% Column Break %%%
+	
+	
+		\begin{column}{0.65\textwidth}
+		\as
+
+			\onslide<5->{Construct another triangle:}
+
+			\begin{overlayarea}{\textwidth}{3.3cm}
+			\begin{center}
+			\includegraphics<6>[width=0.685\textwidth]{images/d12.png} % width setting was chosen based on matching sizing to graphic in other column
+			\includegraphics<7>[width=0.685\textwidth]{images/d13.png}
+			\includegraphics<8>[width=0.685\textwidth]{images/d14.png}
+			\includegraphics<9>[width=0.685\textwidth]{images/d14-z-nocolor.png}
+			\includegraphics<10>[width=0.685\textwidth]{images/d15.png}
+			\includegraphics<11->[width=0.685\textwidth]{images/d15-z-nocolor.png}
+			\end{center}
+			\end{overlayarea}
+
+			\onslide<12->{Pythagorean Theorem on new triangle:
+				\zs
+			\[\alert<14>{a^2 + b^2} = x^2\]}
+			\onslide<13->{Use substitution: } \onslide<15->{$c^2 = x^2 \onslide<16->{\, \, \, \Longrightarrow \, \, \, \answerbox{c = x}}$}
+		\end{column}
+	
+	\end{columns}
+
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+
+
+
+\begin{frame}\frametitle{Proof of Pythagorean Converse}
+    
+	\begin{columns}
+	
+		\begin{column}{0.35\textwidth}
+			\includegraphics<1-2>[width=\textwidth]{images/d9.png}
+			\includegraphics<3>[width=\textwidth]{images/d16.png}
+		\end{column}
+	
+	
+					%%% Column Break %%%
+	
+	
+		\begin{column}{0.65\textwidth}
+
+			\vspace{-0.5cm}
+			\begin{center}
+				\includegraphics<1->[width=0.685\textwidth]{images/d15-z-nocolor.png}
+			\end{center}
+			\zs
+
+			We now know that \alert<1>{$c=x$}. \pause
+			\as
+
+			Thus, by \emph{SSS Congruence}, the triangles must be \alert<2>{congruent} to each other.\pause
+			\as
+
+			Therefore the original triangle must have a \alert{right angle} as well. \qed
+		\end{column}
+	
+	\end{columns}
+
+\end{frame}
+
+
+
+
+
+
+%%%%%%%%%%%%%%% FRAME BREAK %%%%%%%%%%%%%%%
+
+%%% Lesson finished, Ending Slide %%%
+
+
+	% Future note: While this boilerplate ending slide looks pretty decent, it could be improved upon. A good thing to do would be to create a static image in photoshop, then just re-use that. This will do for the pilot though.
+
+
+\begin{frame}[b]\frametitle{Thanks for Watching!}
+    
+\vspace{0.25cm}
+
+				%%% Column Break %%%
+
+
+
+
+		\begin{center}
+			\large Watch the rest of the videos on this topic!
+			\vspace{0.1cm}
+
+			\LARGE
+			\underline{www.\Huge\textbf{chipmunkmath}\LARGE.com} \normalsize
+
+			\bigskip
+
+
+		\end{center}
+
+
+
+
+\vspace{0cm}
+
+
+\begin{columns}[c]
+
+	\begin{column}{0.45\textwidth}
+
+	\vspace{0.5cm}
+
+		\quad \! \LARGE\textcolor[RGB]{85,172,238}{\faTwitter}\large \raisebox{0.27em}{@ChipmunkMath}\normalsize
+
+
+
+	\end{column}
+
+
+				%%% Column Break %%%
+
+				\begin{column}{0.05\textwidth}
+					\vspace{0.1cm}
+					\begin{center}
+						\rule{0.03cm}{2.6cm}
+					\end{center}
+				\end{column}
+
+
+	\begin{column}{0.5\textwidth}
+		\begin{center}
+		\fbox{\,\includegraphics<1->[width=0.08\textwidth]{../../chipmunk-transparent.png} \,\,\, \small \raisebox{0.25em}{\textcolor<1->{Crimson}{\faHeart} \,\,\,Free Education}\,}
+		\end{center}
+		\vspace{-0.3cm}
+		
+		
+		\small Creative Commons: \, \scriptsize \ccLogo \, \ccAttribution \, \ccNonCommercial \, \ccShareAlike \small
+
+		Open source, available on GitHub \normalsize \faGithub \small
+
+		Details at chipmunkmath.com
+
+	\end{column}
+
+\end{columns}
+
+
+\end{frame}
+
+
+\end{document}

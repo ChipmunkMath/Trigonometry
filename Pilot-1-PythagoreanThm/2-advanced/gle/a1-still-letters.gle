@@ -1,0 +1,225 @@
+! Animation Template
+		! This Template specifically geared to animating geometric diagrams.
+		! Should be easy to "plug in" animation module of GLE code
+		! as needed for other templates.
+
+!!! IMPORTANT NOTE !!!
+! This template requires use of the shell script 'gle-animation.sh'.
+! You can find this shell script in the '_Scripts' directory at the top of the course.
+
+!!! HOW TO USE !!!
+! When developing your animation, visualize a few single keyframes.
+! Recommendation: Use QGLE, keeping the GLE file open to visualize output.
+! At start, a single frame is fixed by defining the variable 'p' in the "Animation
+! Building/Testing" subsection of the "Animation Module" section. As you work, change
+! this value of 'p' to see how different frames (as decimal portion of framecount)
+! will be rendered.
+
+! Choose the variable you use in your GLE code based on the kind of motion you want:
+		! 'p' -- Linear motion (percentage of frames complete)
+		! 'ease' -- Ease in and out of motion
+		! 'easein' -- Ease in to motion, but not out
+		! 'easeout' -- Ease out of motion, but not in
+			! With all 'ease' variables, there is an easing coefficient.
+			! Change the coefficient depending on what level of easing you want.
+			! Coefficient has default, can be changed in "Animation Module" section.
+	! NOTE: Even if you choose a variable different than 'p' for your motion, continue
+	! to use 'p' as the fixed variable for considering different frames of output.
+	! There should be no reason to directly define 'ease', etc. for doing rendering
+	! tests, as they are all based from 'p'. Furthermore, because 'p' is based off the
+	! portion of animation completed, you'll get a better sense for final output.
+
+! As you work, notice that none of the above variables need you to have a pre-decided
+! number of frames in mind. The framecount is chosen when you run the 'gle-animation.sh'
+! script and the GLE file will automatically adapt to whatever framecount you choose.
+
+! Once the GLE file is ready to be animated into a series of images, follow the "FINAL
+! CHECK LIST" contained within the "Animation Module"
+
+! As a minor note, if you want to slightly increase rendering speed, you can comment out
+! all of the easing coefficients ('ease', etc.). However, the gain in speed is very minor
+! (only ~10% speed increase), so generally not worthwhile.
+
+! If you need further documentation, read the above script and read through the commented ! ('!') lines below. Pay special attention to the information in the "Animation Module".
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!!!!! Size of Canvas !!!!!
+
+		size 10 10
+
+		! I set a personal default of 'size 10 10'.
+		! Canvas size is not super important by itself, but everything done in GLE is in reference to that. As such, following commands must take that value into account.
+		! Above will often be changed if a non-square aspect ratio is desired for canvas.
+
+		! ANIMATION SPECIFIC
+			! Because animation requires the processing of so many images, it's probably
+			! beneficial in general to choose your size so that there is no excess white
+			! space. Because of the nature of animation, using automatic cropping after
+			! may be more difficult.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!!!!! General Settings !!!!!
+
+set font rm !Sets font as "Roman" (GLE's standard default font)
+		! Fonts are not extensible in GLE. This will work decently, though.
+		! If you want to italics (for math variables), use 'rmi' (Roman Italic).
+			! Alternatively, \it while in a 'text' command switches to italics.
+			! Similarly, \rm in a 'text' command switches to roman.
+
+Set hei 0.9 !Good base text size to work with
+
+set just cc !Justifies text as center-center
+		! Easier for me to center objects up mathematically than eyeballing.
+
+set lwidth 0.07 !Sets width of lines
+		! Set in conjunction with size of canvas. This is a good size for geometric borders. If making a graph, would want a smaller size.
+
+set join mitre !Sets how lines are joined
+		! Using mitre makes for sharp corners, as is expected in geometry diagrams.
+			! This does not work as well as you would hope: if you set a new color (or perhaps any new 'set' command?) while drawing a shape, it messes with mitre creation.
+				! Workaround: Create extremely short rline segments to mimic proper mitre creation for lines. If you see weird, tiny line stubs with no clear purpose, this is what's happening. Sorry for the janky code.
+
+set arrowsize 0.5 !Sets arrow head size
+		! Decent size to work with, setting mainly to have standardized for most pics.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!!!!! LaTeX Module (see notes on using GLE) !!!!!
+	! If you want to use LaTeX, uncomment the below lines.
+	! Note that the 'texpreamble' is pretty much necessary or you will have weird issues.
+	! See the notes on using GLE for more explanation if needed.
+
+			!!! ANIMATION SPECIFIC
+			! If you want to use LaTeX in an animation, you will also need to
+			! modify the 'gle-animation.sh' script to include the -tex flag in
+			! the call to GLE. This will greatly increase rendering time, so it
+			! is recommended to avoid doing so unless necessary.
+
+!			begin texpreamble
+!				\usepackage{amssymb}
+!				\usepackage{amsmath}
+!				\usepackage{wasysym}
+!				\DeclareMathSymbol{\R}{\mathbin}{AMSb}{"52}
+!			end texpreamble
+
+! 			set texscale scale !This is the default.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+				!!!!! ANIMATION MODULE !!!!!
+
+!!! Core Functionality !!!
+
+		!!! Uncomment 'i' and 'framecount' variables when ready to run script.
+			!!! FINAL CHECK LIST:
+				! 1) Comment fixed 'p' value in "Animation Building/Testing".
+				! 2) Uncomment 'i' and 'framecount' variables immediately below.
+				! 3) SAVE this file. (As a check, if using QGLE, it should now fail.)
+				! 4) Run 'gle-animation.sh' with path to GLE file and framecount.
+					! 4.5) Recommendation: Start with small (5 or 10) framecount to
+					! ensure that everything is working before using large value.
+
+!i=arg(1)
+!framecount=arg(2)
+		! 'arg(#)' is taken from GLE command given by 'gle-animation.sh' script.
+		! 'i' is the current frame number (from 0 to [framecount - 1]).
+		! 'framecount' is the total framecount.
+		! STRONG RECOMMENDATION: Do NOT use 'i' for making animations. Use 'p', below.
+
+
+p=i/(framecount-1)
+	! This is Percentage complete, allowing linear stepping based on portion finished.
+	! 'p' gives a value from 0<-->1 depending on which frame you're in.
+	! First frame gives p value of 0, final frame gives p value of 1. Linear between.
+
+
+!!! Animation Building/Testing !!!
+		! Use a fixed value for 'p' when building the animation.
+		! Vary 'p' from 0 to 1 to make sure frames will appear as desired.
+		! Even if working with an 'ease'-type variable, manipulate 'p' above to
+		! do render testing. ('ease' is based on 'p', so that works and gives
+		! the best sense of how final output will look in terms of percent complete.)
+
+	! When animation is ready to be produced, comment out below fixed 'p' value.
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+						p=0.5		! REMEMBER  0<--->p<--->1 !
+			!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+!!! Easing Coefficients !!!
+		! Thanks/Attribution:
+		! The base easing function used here was found on the Math Stack Exchange.
+		! Thanks to user 'robjohn' for writing up this bit of elegance.
+		! http://math.stackexchange.com/questions/121720/ease-in-out-function
+
+
+easecoeff=1.5
+		! This is the "easing coefficient" -- different values give different levels of
+		! easing to start and end. Sane values are 1<--->3. A value of '1' gives
+		! absolutely no easing (linear), while a value of '3' will cause about 80% of
+		! the total motion to occur in the middle 35% of the frames.
+			! Default 'easecoeff' is 1.5: this makes for a nice middle ground with a
+			! bit of easing at beginning and end, but not a huge "rush" in middle.
+
+		! If you want to create the reverse effect ("fast take-off, fast landing, slow
+		! middle"), use an easecoeff of 0<--->1.
+
+			! Possible future feature:
+		! If you want to have different easing coefficients for in and out, you can write
+		! a simple "if->then" conditional to change the easecoeff based on the 'p' value.
+		! Could also just define 'easecoeff' via 'p', Ex: easecoeff=1.3+0.6p.
+		! Might take a bit of experimentation to find "natural" looking way.
+
+! Ordinary in & out easing
+		ease=(p^easecoeff)/((p^easecoeff)+(1-p)^easecoeff)
+! Ease out /only/, no ease in
+		pout=(0.5*p+0.5)
+		easeout=2*((pout^easecoeff)/(pout^easecoeff+(1-pout)^easecoeff)-0.5)
+! Ease in /only/, no ease out
+		pin=(0.5*p)
+		easein=2*((pin^easecoeff)/(pin^easecoeff+(1-pin)^easecoeff))
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!!!!! End of Standard Settings !!!!!
+
+!!!!! Beginning of "Real" Document !!!!!
+
+
+
+! Lengths of four sides
+a=3.46410162
+b=2
+c=4
+!!!
+
+! Note that 5 is half of 10, the canvas size being used. This centers up.
+amove 5-a/2 5-b/2
+rline a 0
+rline 0 b
+rline -a -b
+rline a 0
+		!!! Right Angle Corner Maker !!!	[Uncomment if want to use]
+			set lwidth 0.04
+			! Current location is corner due to above code
+			rmove -0.4 0
+			rline 0 0.4
+			rline 0.4 0
+			set lwidth 0.07 ! Must reset back to default line width
+		!!! End right angle corner maker!!!
+
+set font rmi
+set hei 0.7
+amove 5.09552 3.63926
+text a
+amove 7.16139 4.87539
+text b
+amove 4.70606 5.29872
+text c
+

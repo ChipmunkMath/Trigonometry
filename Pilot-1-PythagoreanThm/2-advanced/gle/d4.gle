@@ -1,0 +1,83 @@
+! Geometry Template
+	!Template developed with expectation of mainly producing geometric diagrams.
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!!!!! Size of Canvas !!!!!
+
+		size 10 5
+
+		! I set a personal default of 'size 10 10'.
+		! Canvas size is not super important by itself, but everything done in GLE is in referene to that. As such, following commands must take that value into account.
+		! Above will often be changed if a non-square aspect ratio is desired for canvas.
+			! Recommend leaving larger value as 10, changing smaller value according to desired aspect ratio.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!!!!! General Settings !!!!!
+
+set font rm !Sets font as "Roman" (GLE's standard default font)
+		! Fonts are not extensible in GLE. This will work decently, though.
+		! If you want to switch to writing italics (for math variables), use either
+			! 'rmi' as the font (Roman Italic)
+			! \it while in a 'text' command to switch to italics
+				! Similarly, \rm in a 'text' command switches to roman
+
+Set hei 0.9 !Good base text size to work with
+
+set just cc !Justifies text as center-center
+		! Easier for me to center objects up mathematically than eyeballing.
+
+set lwidth 0.07 !Sets width of lines
+		! Set in conjunction with size of canvas. This is a good size for geometric borders. If making a graph, would want a smaller size.
+
+set join mitre !Sets how lines are joined
+		! Using mitre makes for sharp corners, as is expected in geometry diagrams.
+			! This does not work as well as you would hope: if you set a new color (or perhaps any new 'set' command?) while drawing a shape, it messes with mitre creation.
+				! Workaround: Create extremely short rline segments to mimic proper mitre creation for lines. If you see weird, tiny line stubs with no clear purpose, this is what's happening. Sorry for the janky code.
+
+set arrowsize 0.5 !Sets arrow head size
+		! Decent size to work with, setting mainly to have standardized for most pics.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!!!!! LaTeX Module (see notes on using GLE) !!!!!
+	! If you want to use LaTeX, uncomment the below lines.
+	! Note that the 'texpreamble' is pretty much necessary or you will have weird issues.
+	! See the notes on using GLE for more explanation if needed.
+
+!			begin texpreamble
+!				\usepackage{amssymb}
+!				\usepackage{amsmath}
+!				\usepackage{wasysym}
+!				\DeclareMathSymbol{\R}{\mathbin}{AMSb}{"52}
+!			end texpreamble
+
+! 			set texscale scale !This is the default.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!!!!! End of Standard Settings !!!!!
+
+!!!!! Beginning of "Real" Document !!!!!
+
+theta=torad(48.5092)
+	! Bottom left angle (in radians!)
+
+amove 1 1
+rline 5*cos(theta) 5*sin(theta)
+aline 9 1
+aline 1 1
+rline 5*cos(theta) 5*sin(theta)
+
+
+set just cr
+
+amove 2.57246 3.30059
+text 5
+amove 7.90646 3.43606
+text 6
+amove 5.06166 0.523522
+text \it c=\rm8
+
