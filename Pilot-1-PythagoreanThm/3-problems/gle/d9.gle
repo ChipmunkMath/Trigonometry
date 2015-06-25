@@ -1,0 +1,136 @@
+! Geometry Template
+	!Template developed with expectation of mainly producing geometric diagrams.
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!!!!! Size of Canvas !!!!!
+
+		size 10 10
+
+		! I set a personal default of 'size 10 10'.
+		! Canvas size is not super important by itself, but everything done in GLE is in referene to that. As such, following commands must take that value into account.
+		! Above will often be changed if a non-square aspect ratio is desired for canvas.
+			! Recommend leaving larger value as 10, changing smaller value according to desired aspect ratio.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!!!!! General Settings !!!!!
+
+set font rm !Sets font as "Roman" (GLE's standard default font)
+		! Fonts are not extensible in GLE. This will work decently, though.
+		! If you want to switch to writing italics (for math variables), use either
+			! 'rmi' as the font (Roman Italic)
+			! \it while in a 'text' command to switch to italics
+				! Similarly, \rm in a 'text' command switches to roman
+
+Set hei 0.9 !Good base text size to work with
+
+set just cc !Justifies text as center-center
+		! Easier for me to center objects up mathematically than eyeballing.
+
+set lwidth 0.07 !Sets width of lines
+		! Set in conjunction with size of canvas. This is a good size for geometric borders. If making a graph, would want a smaller size.
+
+set join mitre !Sets how lines are joined
+		! Using mitre makes for sharp corners, as is expected in geometry diagrams.
+			! This does not work as well as you would hope: if you set a new color (or perhaps any new 'set' command?) while drawing a shape, it messes with mitre creation.
+				! Workaround: Create extremely short rline segments to mimic proper mitre creation for lines. If you see weird, tiny line stubs with no clear purpose, this is what's happening. Sorry for the janky code.
+
+set arrowsize 0.5 !Sets arrow head size
+		! Decent size to work with, setting mainly to have standardized for most pics.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!!!!! LaTeX Module (see notes on using GLE) !!!!!
+	! If you want to use LaTeX, uncomment the below lines.
+	! Note that the 'texpreamble' is pretty much necessary or you will have weird issues.
+	! See the notes on using GLE for more explanation if needed.
+
+!			begin texpreamble
+!				\usepackage{amssymb}
+!				\usepackage{amsmath}
+!				\usepackage{wasysym}
+!				\DeclareMathSymbol{\R}{\mathbin}{AMSb}{"52}
+!			end texpreamble
+
+! 			set texscale scale !This is the default.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!!!!! End of Standard Settings !!!!!
+
+!!!!! Beginning of "Real" Document !!!!!
+
+
+amove 1 1
+
+rline 8 0
+rline 0 8
+rline -8 0
+rline 0 -8
+rline 8 0
+
+
+amove 5 0.510121
+text 5
+
+amove 9.5 5
+text 5
+amove 5 9.50
+text 5
+amove 0.5 5
+text 5
+
+
+	!!! Right Angle Corner Maker !!!
+		set lwidth 0.045
+		amove 1 1
+		rmove a 0 ! Corner where right-angle occurs
+		rmove 0.5 0
+		rline 0 0.5
+		rline -0.5 0
+		set lwidth 0.07 ! Must reset back to default line width
+	!!! End right angle corner maker!!!
+
+		!!! Right Angle Corner Maker !!!
+		set lwidth 0.045
+		amove 9 1
+		rmove a 0 ! Corner where right-angle occurs
+		rmove -0.5 0
+		rline 0 0.5
+		rline 0.5 0
+		set lwidth 0.07 ! Must reset back to default line width
+	!!! End right angle corner maker!!!
+
+		!!! Right Angle Corner Maker !!!
+		set lwidth 0.045
+		amove 1 9
+		rmove a 0 ! Corner where right-angle occurs
+		rmove 0.5 0
+		rline 0 -0.5
+		rline -0.5 0
+		set lwidth 0.07 ! Must reset back to default line width
+	!!! End right angle corner maker!!!
+
+		!!! Right Angle Corner Maker !!!
+		set lwidth 0.045
+		amove 9 9
+		rmove a 0 ! Corner where right-angle occurs
+		rmove -0.5 0
+		rline 0 -0.5
+		rline 0.5 0
+		set lwidth 0.07 ! Must reset back to default line width
+	!!! End right angle corner maker!!!
+
+
+
+
+set color red
+set lstyle 9
+amove 1 1
+!aline 9 9
+
+amove 4.87331 5.66804
+!text \it d
+

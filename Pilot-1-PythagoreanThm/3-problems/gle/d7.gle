@@ -1,0 +1,110 @@
+! Geometry Template
+	!Template developed with expectation of mainly producing geometric diagrams.
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!!!!! Size of Canvas !!!!!
+
+		size 5.2 10
+
+		! I set a personal default of 'size 10 10'.
+		! Canvas size is not super important by itself, but everything done in GLE is in referene to that. As such, following commands must take that value into account.
+		! Above will often be changed if a non-square aspect ratio is desired for canvas.
+			! Recommend leaving larger value as 10, changing smaller value according to desired aspect ratio.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!!!!! General Settings !!!!!
+
+set font rm !Sets font as "Roman" (GLE's standard default font)
+		! Fonts are not extensible in GLE. This will work decently, though.
+		! If you want to switch to writing italics (for math variables), use either
+			! 'rmi' as the font (Roman Italic)
+			! \it while in a 'text' command to switch to italics
+				! Similarly, \rm in a 'text' command switches to roman
+
+Set hei 0.9 !Good base text size to work with
+
+set just cc !Justifies text as center-center
+		! Easier for me to center objects up mathematically than eyeballing.
+
+set lwidth 0.07 !Sets width of lines
+		! Set in conjunction with size of canvas. This is a good size for geometric borders. If making a graph, would want a smaller size.
+
+set join mitre !Sets how lines are joined
+		! Using mitre makes for sharp corners, as is expected in geometry diagrams.
+			! This does not work as well as you would hope: if you set a new color (or perhaps any new 'set' command?) while drawing a shape, it messes with mitre creation.
+				! Workaround: Create extremely short rline segments to mimic proper mitre creation for lines. If you see weird, tiny line stubs with no clear purpose, this is what's happening. Sorry for the janky code.
+
+set arrowsize 0.5 !Sets arrow head size
+		! Decent size to work with, setting mainly to have standardized for most pics.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!!!!! LaTeX Module (see notes on using GLE) !!!!!
+	! If you want to use LaTeX, uncomment the below lines.
+	! Note that the 'texpreamble' is pretty much necessary or you will have weird issues.
+	! See the notes on using GLE for more explanation if needed.
+
+!			begin texpreamble
+!				\usepackage{amssymb}
+!				\usepackage{amsmath}
+!				\usepackage{wasysym}
+!				\DeclareMathSymbol{\R}{\mathbin}{AMSb}{"52}
+!			end texpreamble
+
+! 			set texscale scale !This is the default.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!!!!! End of Standard Settings !!!!!
+
+!!!!! Beginning of "Real" Document !!!!!
+
+
+
+
+
+
+! Setting up values for triangle
+scalefactor=0.72
+a=5*scalefactor
+b=12*scalefactor
+c=13*scalefactor
+
+startx=0.5
+starty=1
+
+theta=acos((a^2+c^2-b^2)/(2*a*c))
+
+amove startx starty
+
+rline cos(theta)*c sin(theta)*c
+aline startx+a starty
+aline startx starty
+rline cos(theta)*c sin(theta)*c
+
+set color red
+amove 0.977606 5.13822
+text \it x + \rm 5
+
+set color blue
+amove 2.34889 0.556869
+text \it x \rm – 3
+
+set color black
+amove 4.74865 5.10705
+text 12
+
+
+	!!! Right Angle Corner Maker !!!
+		set lwidth 0.045
+		amove startx starty
+		rmove a 0 ! Corner where right-angle occurs
+		rmove -0.5 0
+		rline 0 0.5
+		rline 0.5 0
+		set lwidth 0.07 ! Must reset back to default line width
+	!!! End right angle corner maker!!!
+
